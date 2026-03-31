@@ -633,11 +633,80 @@
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
+  /* ── BURGER MENU ── */
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .nav-burger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2) { opacity: 0; }
+  .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 52px;
+    left: 0; right: 0;
+    background: var(--paper-card);
+    border-bottom: 2px solid var(--paper-warm);
+    z-index: 99;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu-item {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--paper-warm);
+    padding: 1rem 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+  }
+  .mobile-menu-item:last-child { border-bottom: none; }
+  .mobile-menu-item:hover { background: var(--paper-warm); color: var(--ink); }
+  .mobile-menu-item.active { color: var(--accent); }
+
   @media (max-width: 640px) {
     .two-col { grid-template-columns: 1fr; }
-    nav { overflow-x: auto; }
-    .nav-tab { font-size: 10px; padding: 0 10px; }
+    nav { padding: 0 1rem; overflow: visible; }
+    .nav-tabs { display: none; }
+    .nav-progress { display: none; }
+    .nav-burger { display: flex; }
+    .nav-logo { font-size: 18px; }
     .content-wrap { padding: 1.5rem 1rem 3rem; }
+    .formula-header { padding: 0.9rem 1rem; gap: 8px; }
+    .formula-header-title { font-size: 13px; }
+    .playbook-badge { font-size: 9px; padding: 3px 7px; }
+    .page-hero { padding: 2rem 1rem 2.5rem; }
+    .hero-title { font-size: clamp(2rem, 8vw, 3.2rem); }
+    .section-intro { padding: 2rem 1rem 1.5rem; }
+    .section-intro-title { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+    .book-notes { padding: 1rem; }
+    .example-section-header { padding: 0.75rem 1rem 0.5rem; }
+    .example-section-body { padding: 0 1rem 1rem; }
   }
 
   /* ── LABEL ── */
@@ -1135,7 +1204,17 @@
     <button class="nav-tab" onclick="showSection('reflection')">Reflection</button>
   </div>
   <span class="nav-progress" id="progress-text"></span>
+  <button class="nav-burger" id="nav-burger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu-item active" onclick="showSection('home');closeMobileMenu()">Home</button>
+  <button class="mobile-menu-item" onclick="showSection('frameworks');closeMobileMenu()">Frameworks</button>
+  <button class="mobile-menu-item" onclick="showSection('formulas');closeMobileMenu()">Formulas</button>
+  <button class="mobile-menu-item" onclick="showSection('playbooks');closeMobileMenu()">Playbooks</button>
+  <button class="mobile-menu-item" onclick="showSection('reflection');closeMobileMenu()">Reflection</button>
+</div>
 
 <main>
 
@@ -3229,6 +3308,9 @@
     const tabs = document.querySelectorAll('.nav-tab');
     const map = { home: 0, frameworks: 1, formulas: 2, playbooks: 3, reflection: 4 };
     if (map[id] !== undefined) tabs[map[id]].classList.add('active');
+    // Sync mobile menu active state
+    document.querySelectorAll('.mobile-menu-item').forEach(b => b.classList.remove('active'));
+    if (map[id] !== undefined) document.querySelectorAll('.mobile-menu-item')[map[id]].classList.add('active');
     window.scrollTo(0, 0);
     updateProgress();
   }
@@ -3351,6 +3433,18 @@
     const chev = document.getElementById('ex-chevron-' + id);
     body.classList.toggle('open');
     chev.textContent = body.classList.contains('open') ? '▴ Collapse' : '▾ Expand';
+  }
+
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const burger = document.getElementById('nav-burger');
+    menu.classList.toggle('open');
+    burger.classList.toggle('open');
+  }
+
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('nav-burger').classList.remove('open');
   }
 
   function toggleFormula(id) {
