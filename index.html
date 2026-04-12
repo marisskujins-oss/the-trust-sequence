@@ -298,12 +298,22 @@ function handleSignup() {
   }
   btn.disabled = true;
   btn.textContent = 'Sending...';
-  setTimeout(() => {
+
+  fetch('https://script.google.com/macros/s/AKfycby8-sDZXNw1DnQZ64JrrBPJwHUuFkKNoh3QVmxn4MPsADPDre7RwyF1ztw5g9xn7VDauw/exec', {
+    method: 'POST',
+    body: JSON.stringify({ name, email }),
+  })
+  .then(() => {
     document.getElementById('signup-form').style.display = 'none';
     document.querySelector('.email-note').style.display = 'none';
     document.getElementById('signup-success').classList.add('show');
-    console.log('Signup:', { name, email });
-  }, 800);
+  })
+  .catch(() => {
+    btn.disabled = false;
+    btn.textContent = 'Send Me the Frameworks';
+    document.getElementById('email-input').style.borderColor = '#c0392b';
+    setTimeout(() => { document.getElementById('email-input').style.borderColor = ''; }, 2000);
+  });
 }
 document.getElementById('email-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') handleSignup(); });
 </script>
