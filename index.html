@@ -85,19 +85,24 @@
   .about-stat { text-align: center; min-width: 100px; }
   .about-stat-num { font-family: var(--serif); font-size: 1.8rem; color: var(--accent); }
   .about-stat-label { font-size: 11px; color: var(--ink-muted); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; }
-  .cta-section { background: var(--ink); color: var(--paper); text-align: center; }
-  .cta-section .section-inner { max-width: 520px; }
-  .cta-section .section-eyebrow { color: var(--accent); }
-  .cta-section .section-title { color: var(--paper); }
-  .cta-section .section-desc { color: rgba(247,244,238,0.5); margin: 0 auto 2rem; }
-  .email-form { display: flex; flex-direction: column; gap: 0.75rem; max-width: 400px; margin: 0 auto; }
-  .email-form input { font-family: var(--sans); font-size: 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); color: var(--paper); padding: 0.8rem 1rem; outline: none; transition: border-color 0.15s; }
-  .email-form input:focus { border-color: rgba(255,255,255,0.3); }
-  .email-form input::placeholder { color: #6b6860; }
-  .email-form button { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: var(--teal); color: var(--paper); border: none; border-radius: var(--radius); padding: 0.85rem 1.5rem; cursor: pointer; transition: background 0.2s, transform 0.15s; }
-  .email-form button:hover { background: var(--teal-deep); transform: translateY(-1px); }
-  .email-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-  .email-note { font-size: 11px; color: rgba(247,244,238,0.3); margin-top: 0.5rem; }
+  .cta-section { background: #0f0e0c; color: var(--paper); text-align: center; position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(42,107,107,0.12) 0%, transparent 70%); pointer-events: none; }
+  .cta-section .section-inner { max-width: 560px; position: relative; z-index: 1; }
+  .cta-section .section-eyebrow { color: var(--teal-soft); }
+  .cta-section .section-title { color: var(--paper); font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 1.25rem; }
+  .cta-section .section-desc { color: rgba(247,244,238,0.55); margin: 0 auto 1.75rem; }
+  .cta-deliverables { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin: 0 auto 2rem; max-width: 380px; text-align: left; }
+  .cta-deliverables li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 13.5px; color: rgba(247,244,238,0.7); line-height: 1.5; }
+  .cta-deliverables li::before { content: ''; display: inline-block; width: 16px; height: 16px; min-width: 16px; background: var(--teal); border-radius: 50%; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 12.75l6 6 9-13.5'/%3E%3C/svg%3E"); background-size: 10px; background-repeat: no-repeat; background-position: center; margin-top: 2px; }
+  .signup-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 2rem; max-width: 460px; margin: 0 auto; }
+  .email-form { display: flex; flex-direction: column; gap: 0.75rem; }
+  .email-form input { font-family: var(--sans); font-size: 14px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.28); border-radius: var(--radius); color: var(--paper); padding: 0.85rem 1rem; outline: none; transition: border-color 0.15s, background 0.15s; }
+  .email-form input:focus { border-color: var(--teal-soft); background: rgba(255,255,255,0.2); }
+  .email-form input::placeholder { color: rgba(247,244,238,0.5); }
+  .email-form button { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0.04em; background: var(--accent); color: var(--paper); border: none; border-radius: var(--radius); padding: 1rem 1.5rem; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 24px rgba(184,92,42,0.35); }
+  .email-form button:hover { background: #a04e22; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(184,92,42,0.45); }
+  .email-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+  .email-note { font-size: 11px; color: rgba(247,244,238,0.25); margin-top: 1rem; }
   .email-success { display: none; text-align: center; padding: 1rem 0; }
   .email-success.show { display: block; }
   .email-success .check-circle { width: 48px; height: 48px; background: var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; animation: popIn 0.35s ease; }
@@ -241,15 +246,22 @@
 
 <section class="section cta-section" id="early-access">
   <div class="section-inner">
-    <p class="section-eyebrow reveal">Early Access</p>
-    <h2 class="section-title reveal">Get the frameworks before the book drops</h2>
-    <p class="section-desc reveal">I'll send you a few frameworks early - the ones you can walk into a room and use the same week. Then the book when it's ready.</p>
-    <div class="email-form reveal" id="signup-form">
-      <input type="text" id="name-input" placeholder="First name" aria-label="First name" autocomplete="given-name">
-      <input type="email" id="email-input" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
-      <button type="button" id="submit-btn" onclick="handleSignup()">I'm In</button>
+    <p class="section-eyebrow reveal">Free — Before the Book</p>
+    <h2 class="section-title reveal">Two frameworks.<br>Usable this week.</h2>
+    <p class="section-desc reveal">Drop your email and I'll send you the two frameworks that change how most client conversations start. No course, no sequence — just the work, straight to your inbox.</p>
+    <ul class="cta-deliverables reveal">
+      <li>The opening move that makes people want to keep talking</li>
+      <li>The framing that turns hesitation into a yes</li>
+      <li>The full book when it's ready — before anyone else</li>
+    </ul>
+    <div class="signup-card reveal" id="signup-form">
+      <div class="email-form">
+        <input type="text" id="name-input" placeholder="First name" aria-label="First name" autocomplete="given-name">
+        <input type="email" id="email-input" placeholder="Work email" aria-label="Email address" autocomplete="email" required>
+        <button type="button" id="submit-btn" onclick="handleSignup()">Send Me the Frameworks</button>
+      </div>
+      <p class="email-note">No spam. No funnels. Unsubscribe any time.</p>
     </div>
-    <p class="email-note reveal">No spam. No funnels. Just the work.</p>
     <div class="email-success" id="signup-success">
       <div class="check-circle">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
