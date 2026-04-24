@@ -184,8 +184,28 @@
   ]
 }
 </script>
+<style>
+  .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(26,24,20,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 1.5rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--serif); font-size: 0.95rem; color: rgba(247,244,238,0.7); text-decoration: none; transition: color 0.15s; }
+  .nav-logo:hover { color: var(--paper); }
+  .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(247,244,238,0.45); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover { color: rgba(247,244,238,0.9); }
+  .nav-links .nav-cta { background: var(--accent); color: var(--paper); padding: 0.45rem 1rem; border-radius: var(--radius); font-weight: 500; opacity: 1; }
+  .nav-links .nav-cta:hover { background: #a04e22; color: var(--paper); }
+  .hero { padding-top: calc(3rem + 56px); }
+</style>
 </head>
 <body>
+
+<nav class="site-nav">
+  <a href="/" class="nav-logo">The Trust Sequence</a>
+  <div class="nav-links">
+    <a href="/excerpt/">Read an Excerpt</a>
+    <a href="/about/">About</a>
+    <a href="#early-access" class="nav-cta">Get Early Access</a>
+  </div>
+</nav>
 
 <section class="hero" id="top">
   <div class="hero-inner">
@@ -328,6 +348,8 @@
 <footer>
   <div class="footer-logo">The Trust Sequence</div>
   <div class="footer-links">
+    <a href="/about/">About the Author</a>
+    <a href="/excerpt/">Read an Excerpt</a>
     <a href="https://www.linkedin.com/in/maris-skujins/" target="_blank" rel="noopener">LinkedIn</a>
     <a href="#top">Back to top</a>
   </div>
