@@ -93,13 +93,20 @@
   <div class="section-inner">
     <p class="updated">Last updated: 25 April 2026</p>
 
-    <h2>Who this covers</h2>
-    <p>This policy applies to <strong>thetrustsequence.com</strong>, operated by Maris Skujins, and to the LinkedIn integration application registered under the same name. The integration exists to publish posts authored by Maris Skujins to his own personal LinkedIn profile on a schedule. It is not used to access, post on behalf of, or collect data from any other person.</p>
+    <h2>Who this covers and who is responsible</h2>
+    <p>This policy applies to <strong>thetrustsequence.com</strong> and to the LinkedIn integration application registered under the same name. The data controller for both is <strong>Maris Skujins</strong>, an individual based in Latvia. Contact: <a href="mailto:maris.skujins@gmail.com">maris.skujins@gmail.com</a>.</p>
+    <p>The LinkedIn integration exists to publish posts authored by Maris Skujins to his own personal LinkedIn profile on a schedule. It is not used to access, post on behalf of, or collect data from any other person.</p>
 
     <h2>Information we collect</h2>
 
     <h3>From visitors to thetrustsequence.com</h3>
-    <p>If you submit your email address through the early-access form, we store that email address for the sole purpose of notifying you when the book becomes available. We do not sell, share, or use your email for any other purpose. The site uses no analytics trackers, no third-party advertising scripts, and sets no marketing cookies.</p>
+    <p>If you submit the early-access form, we collect:</p>
+    <ul>
+      <li><strong>Your first name</strong> (optional, used to personalise any future message)</li>
+      <li><strong>Your email address</strong> (required, used to contact you about the book)</li>
+      <li><strong>The date and time</strong> your submission was received</li>
+    </ul>
+    <p>We do not collect your IP address, browser fingerprint, location, or any tracking identifier through the form. The site itself sets no first-party cookies, runs no analytics scripts, embeds no advertising trackers, and uses no fingerprinting or social-media pixels.</p>
 
     <h3>From the LinkedIn integration</h3>
     <p>The LinkedIn integration authenticates as Maris Skujins through LinkedIn's standard OAuth 2.0 flow. It stores:</p>
@@ -110,34 +117,67 @@
     </ul>
     <p>These tokens authorise the application to act only on behalf of Maris Skujins, only on his own LinkedIn profile. The application does not collect, request, or store information about any other LinkedIn user.</p>
 
-    <h2>How information is used</h2>
+    <h2>Legal basis for processing (GDPR)</h2>
+    <p>Where the GDPR applies, we rely on the following lawful bases under Article 6:</p>
     <ul>
-      <li><strong>Email addresses</strong> are used only to send book launch notifications.</li>
+      <li><strong>Consent (Art. 6(1)(a))</strong> — for collecting and using your email address through the early-access form. By submitting the form you give us permission to contact you for the purpose described below. You can withdraw this consent at any time, with no effect on the lawfulness of any processing that took place before withdrawal.</li>
+      <li><strong>Legitimate interests (Art. 6(1)(f))</strong> — for the operation of the LinkedIn integration on the controller's own profile. The integration processes only the controller's own personal data (his own tokens, his own posts) and does not affect third parties.</li>
+    </ul>
+
+    <h2>How we use the information</h2>
+    <ul>
+      <li><strong>Your name and email</strong> are used solely to notify you when the book becomes available, and to send a small number of related updates about the book (for example, the first framework, or a chapter excerpt). We do not use this data for advertising, profiling, or automated decision-making, and we will never sell or rent it.</li>
       <li><strong>OAuth tokens</strong> are used only to call LinkedIn's API to publish posts and add the first comment under each post.</li>
-      <li><strong>Post content</strong> is published to Maris's LinkedIn profile and retained in a local log for operational purposes (so we can see what went out, when, and whether it succeeded).</li>
+      <li><strong>Post content</strong> is published to Maris's LinkedIn profile and retained in an operational log so we can confirm what was published, when, and whether it succeeded.</li>
     </ul>
 
-    <h2>How information is stored</h2>
-    <p>OAuth tokens, queued posts, and the post log are stored on a private server controlled by Maris Skujins. Files are not world-readable and are not accessible from the public internet except through authenticated API endpoints. Tokens are kept only for as long as needed to operate the integration and are deleted on request.</p>
-
-    <h2>Sharing</h2>
-    <p>We do not share, sell, or transfer any of the above information to third parties. The only outbound data transfers are to LinkedIn's own API, which is the destination platform for the posts.</p>
-
-    <h2>Your rights</h2>
-    <p>You can:</p>
+    <h2>Where your data is stored, who processes it, and international transfers</h2>
+    <p>We use the following processors to operate the site and integration:</p>
     <ul>
-      <li>Request that your email address be removed from the early-access list at any time.</li>
-      <li>Revoke the LinkedIn integration's access at any time from your LinkedIn account settings under <em>Data privacy → Other applications</em>. Revocation immediately invalidates the stored tokens.</li>
+      <li><strong>Google LLC</strong> — the early-access form submits your name and email to a Google Apps Script endpoint, and the data is stored in a Google Sheet within a Google Workspace account controlled by Maris Skujins. Google processes data on Google's infrastructure, which may include servers in the United States. Transfers to the US are covered by the EU&ndash;US Data Privacy Framework, to which Google is certified, and by Google's Standard Contractual Clauses where applicable.</li>
+      <li><strong>GitHub, Inc.</strong> (a subsidiary of Microsoft) — hosts the static website via GitHub Pages. GitHub may collect aggregate request logs (including visitor IP addresses) for security and abuse-prevention purposes, governed by GitHub's own privacy policy. We do not access these logs.</li>
+      <li><strong>LinkedIn Ireland Unlimited Company</strong> — the destination platform for posts created by the integration. The integration interacts with LinkedIn's API; LinkedIn processes the resulting content under its own terms and privacy policy.</li>
+      <li><strong>The hosting provider for the LinkedIn integration server</strong> — a server located in the EU, controlled by Maris Skujins. OAuth tokens, queued posts, and the post log are stored here, on storage that is not world-readable and not exposed to the public internet except through authenticated API endpoints.</li>
     </ul>
+    <p>We do not share, sell, or transfer your personal data to any party outside the processors listed above.</p>
+
+    <h2>How long we keep your data</h2>
+    <ul>
+      <li><strong>Your name and email</strong> are kept until you ask us to remove them, or until 24 months after the book is published (whichever is sooner), at which point the early-access list is deleted.</li>
+      <li><strong>OAuth tokens</strong> are kept only for as long as the integration is in use; they are deleted on request, when the integration is decommissioned, or when you (as the LinkedIn account holder) revoke the application's access in LinkedIn settings.</li>
+      <li><strong>Post logs</strong> are kept for operational and auditing purposes for up to 24 months and then deleted.</li>
+    </ul>
+
+    <h2>Your rights under the GDPR</h2>
+    <p>If your personal data is processed by us, you have the following rights:</p>
+    <ul>
+      <li><strong>Right of access (Art. 15)</strong> &mdash; ask for a copy of the personal data we hold about you.</li>
+      <li><strong>Right to rectification (Art. 16)</strong> &mdash; ask us to correct inaccurate or incomplete data.</li>
+      <li><strong>Right to erasure (Art. 17), the &ldquo;right to be forgotten&rdquo;</strong> &mdash; ask us to delete your data.</li>
+      <li><strong>Right to restriction of processing (Art. 18)</strong> &mdash; ask us to pause processing while a question is resolved.</li>
+      <li><strong>Right to data portability (Art. 20)</strong> &mdash; receive the data you provided in a common machine-readable format.</li>
+      <li><strong>Right to object (Art. 21)</strong> &mdash; object to our use of your data on the basis of legitimate interests.</li>
+      <li><strong>Right to withdraw consent (Art. 7(3))</strong> &mdash; where processing is based on consent, withdraw it at any time. Every email we send will include a one-click unsubscribe link, and you can also unsubscribe by replying with the word &ldquo;unsubscribe&rdquo; or by emailing us directly.</li>
+    </ul>
+    <p>To exercise any of these rights, email <a href="mailto:maris.skujins@gmail.com">maris.skujins@gmail.com</a>. We aim to respond within 30 days, as required by Article 12(3) of the GDPR.</p>
+
+    <h2>Right to complain to a supervisory authority</h2>
+    <p>If you believe your rights have been infringed, you can lodge a complaint with the data protection supervisory authority of the EU/EEA member state where you live, where you work, or where the alleged infringement took place. The supervisory authority for the controller is Latvia's <strong>Data State Inspectorate</strong> (<em>Datu valsts inspekcija</em>), <a href="https://www.dvi.gov.lv/" target="_blank" rel="noopener">www.dvi.gov.lv</a>.</p>
+
+    <h2>Automated decision-making and profiling</h2>
+    <p>We do not use your data for automated decision-making or profiling within the meaning of Article 22 of the GDPR.</p>
+
+    <h2>Security</h2>
+    <p>We take reasonable technical and organisational measures to protect your data, including transport-layer encryption (HTTPS) for all submissions, restricted access to the systems that hold the data, and the use of established processors that maintain their own security programmes. No system is perfectly secure; if a breach occurs that is likely to result in a risk to your rights, we will notify the supervisory authority within 72 hours and, where required, you directly.</p>
 
     <h2>Children</h2>
-    <p>The site and integration are not directed at children under 16 and do not knowingly collect information from them.</p>
+    <p>The site and the integration are not directed at children under 16 and do not knowingly collect information from them. If you are a parent or guardian and believe your child has provided us with personal data, please contact us and we will delete it.</p>
 
     <h2>Changes to this policy</h2>
-    <p>If this policy changes materially, the &ldquo;Last updated&rdquo; date above will reflect the change. Continued use of the site after a change constitutes acceptance of the updated policy.</p>
+    <p>If this policy changes materially, the &ldquo;Last updated&rdquo; date above will be revised. For substantive changes that affect how we use data already collected from you, we will notify you by email before the change takes effect.</p>
 
     <h2>Contact</h2>
-    <p>Questions about this policy or about data held about you: <a href="mailto:maris.skujins@gmail.com">maris.skujins@gmail.com</a>.</p>
+    <p>Questions about this policy, or about data held about you: <a href="mailto:maris.skujins@gmail.com">maris.skujins@gmail.com</a>.</p>
   </div>
 </section>
 
