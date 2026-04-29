@@ -1,0 +1,17 @@
+[Unit]
+Description=LinkedIn Poster
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/linkedin-poster
+EnvironmentFile=/opt/linkedin-poster/.env
+ExecStart=/usr/bin/node src/server.js
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
