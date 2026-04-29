@@ -182,6 +182,7 @@ async function tick() {
         imageUrn: result.imageUrn,
         commentUrn: result.commentUrn,
         commentError: result.commentError,
+        commentRetries: result.commentRetries || 0,
         success: true,
         error: null,
       });

@@ -91,7 +91,32 @@ async function createPost(accessToken, { authorUrn, text, imageUrn, altText, vis
   return postUrn;
 }
 
-async function createComment(accessToken, postUrn, actorUrn, text) {
+const COMMENT_RETRY_MAX_ATTEMPTS = parseInt(
+  process.env.COMMENT_RETRY_MAX_ATTEMPTS || '6',
+  10
+);
+const COMMENT_RETRY_INITIAL_DELAY_MS = parseInt(
+  process.env.COMMENT_RETRY_INITIAL_DELAY_MS || '1500',
+  10
+);
+const COMMENT_RETRY_BACKOFF_MULTIPLIER = parseFloat(
+  process.env.COMMENT_RETRY_BACKOFF_MULTIPLIER || '2.0'
+);
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function isPropagationRace(err) {
+  return (
+    err &&
+    err.statusCode === 404 &&
+    typeof err.errorBody === 'string' &&
+    /Unable to obtain activity for urn/i.test(err.errorBody)
+  );
+}
+
+async function createCommentOnce(accessToken, postUrn, actorUrn, text) {
   const encodedUrn = encodeURIComponent(postUrn);
   const res = await fetch(`${V2_BASE}/socialActions/${encodedUrn}/comments`, {
     method: 'POST',
@@ -106,10 +131,52 @@ async function createComment(accessToken, postUrn, actorUrn, text) {
     }),
   });
   if (!res.ok) {
-    throw new Error(`comment_create_failed (${res.status}): ${await readError(res)}`);
+    const errorBody = await readError(res);
+    const err = new Error(`comment_create_failed (${res.status}): ${errorBody}`);
+    err.statusCode = res.status;
+    err.errorBody = errorBody;
+    throw err;
   }
   const data = await res.json().catch(() => ({}));
   return data.$URN || data.urn || data.commentUrn || null;
+}
+
+// LinkedIn returns a share URN immediately, but the corresponding activity
+// URN that the comments endpoint needs is materialised by a separate
+// pipeline. A 404 with "Unable to obtain activity for urn" can occur for
+// 1–30 seconds after share creation. Retry with exponential backoff on
+// that specific error only; fail fast on all others.
+async function createComment(accessToken, postUrn, actorUrn, text) {
+  let attempt = 0;
+  let lastError = null;
+  while (attempt < COMMENT_RETRY_MAX_ATTEMPTS) {
+    try {
+      const commentUrn = await createCommentOnce(accessToken, postUrn, actorUrn, text);
+      return { commentUrn, attempts: attempt + 1 };
+    } catch (err) {
+      lastError = err;
+      attempt += 1;
+      if (!isPropagationRace(err)) {
+        err.attempts = attempt;
+        throw err;
+      }
+      if (attempt >= COMMENT_RETRY_MAX_ATTEMPTS) break;
+      const delay = Math.round(
+        COMMENT_RETRY_INITIAL_DELAY_MS *
+          Math.pow(COMMENT_RETRY_BACKOFF_MULTIPLIER, attempt - 1)
+      );
+      console.log(
+        `[linkedin] comment URN propagation 404 for ${postUrn}, retrying in ${delay}ms (attempt ${attempt}/${COMMENT_RETRY_MAX_ATTEMPTS})`
+      );
+      await sleep(delay);
+    }
+  }
+  const giveUp = new Error(
+    `comment_create_failed_after_${COMMENT_RETRY_MAX_ATTEMPTS}_attempts: ${lastError ? lastError.message : 'unknown'}`
+  );
+  giveUp.attempts = COMMENT_RETRY_MAX_ATTEMPTS;
+  giveUp.statusCode = lastError?.statusCode;
+  throw giveUp;
 }
 
 function postUrnToUrl(postUrn) {
@@ -143,11 +210,15 @@ async function publishPost({ text, imageBuffer, altText, firstComment, visibilit
 
   let commentUrn = null;
   let commentError = null;
+  let commentRetries = 0;
   if (firstComment) {
     try {
-      commentUrn = await createComment(accessToken, postUrn, ownerUrn, firstComment);
+      const result = await createComment(accessToken, postUrn, ownerUrn, firstComment);
+      commentUrn = result.commentUrn;
+      commentRetries = result.attempts - 1;
     } catch (err) {
       commentError = err.message;
+      commentRetries = err.attempts ? err.attempts - 1 : 0;
     }
   }
 
@@ -157,6 +228,7 @@ async function publishPost({ text, imageBuffer, altText, firstComment, visibilit
     imageUrn,
     commentUrn,
     commentError,
+    commentRetries,
   };
 }
 
