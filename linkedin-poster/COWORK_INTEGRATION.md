@@ -90,13 +90,25 @@ Response:
   "postUrl": "https://www.linkedin.com/feed/update/urn:li:share:7123456789",
   "imageUrn": "urn:li:image:D5610AQ...",
   "commentUrn": "urn:li:comment:(urn:li:activity:..., ...)",
-  "commentError": null
+  "commentError": null,
+  "commentRetries": 0
 }
 ```
 
-If the post succeeded but the comment failed, `commentError` will contain the
-error message. The post itself is still published — re-running won't help.
-Surface this to Maris if it happens.
+`commentRetries` is the number of failed comment attempts before success
+(or before giving up). LinkedIn's activity URN is eventually-consistent —
+the server retries the comment up to 6 times with exponential backoff
+(1.5s, 3s, 6s, 12s, 24s) on the specific 404 "Unable to obtain activity
+for urn" error. Permanent errors (401, 403, 422) fail fast.
+
+If `commentRetries` > 2, LinkedIn's propagation is running slow that day —
+worth a structured log. If `commentRetries` >= 6 and `commentError` is
+populated, the comment didn't make it through; the post is still live but
+without its CTA. Surface this to Maris.
+
+If the post succeeded but the comment failed, `commentError` will contain
+the error message. The post itself is still published — re-running won't
+help. Surface this to Maris if it happens.
 
 Use `/api/schedule` for normal Sunday-batch operation. Use `/api/post` only if
 you need to publish on the same call (e.g. retry, debug, urgent post).
