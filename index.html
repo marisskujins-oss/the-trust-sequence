@@ -402,8 +402,9 @@ function handleSignup() {
   btn.disabled = true;
   btn.textContent = 'Sending...';
 
-  fetch('https://script.google.com/macros/s/AKfycby8-sDZXNw1DnQZ64JrrBPJwHUuFkKNoh3QVmxn4MPsADPDre7RwyF1ztw5g9xn7VDauw/exec', {
+  fetch('https://poster.thetrustsequence.com/subscribe', {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, email }),
   })
   .then(() => {
@@ -413,7 +414,7 @@ function handleSignup() {
   })
   .catch(() => {
     btn.disabled = false;
-    btn.textContent = 'Send Me the Frameworks';
+    btn.textContent = 'Notify Me';
     document.getElementById('email-input').style.borderColor = '#c0392b';
     setTimeout(() => { document.getElementById('email-input').style.borderColor = ''; }, 2000);
   });
