@@ -19,16 +19,56 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  "mainEntity": {
-    "@type": "Person",
-    "@id": "https://thetrustsequence.com/#author",
-    "name": "Maris Skujins",
-    "url": "https://thetrustsequence.com/about/",
-    "sameAs": ["https://www.linkedin.com/in/maris-skujins/"],
-    "jobTitle": "Enterprise Sales Leader & Author",
-    "description": "Enterprise sales leader with 10+ years experience managing teams across 20+ countries. Author of The Trust Sequence, drawn from thousands of real sales conversations."
-  }
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://thetrustsequence.com/about/#profilepage",
+      "url": "https://thetrustsequence.com/about/",
+      "name": "About Maris Skujins",
+      "mainEntity": { "@id": "https://thetrustsequence.com/#author" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://thetrustsequence.com/#author",
+      "name": "Maris Skujins",
+      "url": "https://thetrustsequence.com/about/",
+      "image": "https://thetrustsequence.com/og-image.png",
+      "sameAs": [
+        "https://www.linkedin.com/in/maris-skujins/"
+      ],
+      "jobTitle": "Enterprise Sales Leader & Author",
+      "description": "Enterprise sales leader with 10+ years experience managing teams across 20+ countries. Built businesses from scratch across three continents. Author of The Trust Sequence, a sales methodology built from 600+ recorded conversations and thousands of real deals.",
+      "knowsAbout": [
+        "Enterprise Sales",
+        "B2B Sales",
+        "Sales Methodology",
+        "Trust in Sales",
+        "Account Management",
+        "Sales Conversation Frameworks",
+        "E-commerce",
+        "Client Relationship Management",
+        "Negotiation",
+        "Sales Leadership"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Scandiweb",
+        "url": "https://scandiweb.com"
+      },
+      "nationality": {
+        "@type": "Country",
+        "name": "Latvia"
+      },
+      "author": [
+        {
+          "@type": "Book",
+          "@id": "https://thetrustsequence.com/#book",
+          "name": "The Trust Sequence: Walk Out With a Yes",
+          "url": "https://thetrustsequence.com/"
+        }
+      ]
+    }
+  ]
 }
 </script>
 <style>
