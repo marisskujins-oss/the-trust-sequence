@@ -75,8 +75,8 @@
 
   /* Components: button */
   .btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-text); font-size: var(--size-small); font-weight: var(--weight-strong); letter-spacing: 0.02em; line-height: 1; padding: var(--space-4) var(--space-5); border-radius: var(--radius); border: var(--rule-width) solid transparent; cursor: pointer; text-decoration: none; transition: background-color var(--duration), color var(--duration); }
-  .btn-primary { background: var(--color-accent); color: var(--color-on-accent); }
-  .btn-primary:hover, .btn-primary.is-hover { background: var(--color-ink); }
+  .btn-primary { background: var(--color-accent); color: var(--color-on-accent); border-color: var(--color-accent-border); }
+  .btn-primary:hover, .btn-primary.is-hover { background: var(--color-ink); color: var(--color-paper); border-color: var(--color-ink); }
   .btn-secondary { background: transparent; color: var(--color-ink); border-color: var(--color-ink); }
   .btn-secondary:hover, .btn-secondary.is-hover { background: var(--color-ink); color: var(--color-paper); }
   .btn.is-focus { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
@@ -105,7 +105,7 @@
   /* Rules */
   .rule-hair { border: 0; border-top: var(--rule-width) solid var(--color-rule); }
   .rule-ink { border: 0; border-top: var(--rule-width) solid var(--color-ink); }
-  .rule-accent { border: 0; border-top: 2px solid var(--color-accent); width: var(--space-8); }
+  .rule-accent { border: 0; border-top: var(--accent-rule-height) solid var(--color-accent); width: var(--space-8); }
 
   /* Hero mocks */
   .mock { border: var(--rule-width) solid var(--color-ink); background: var(--color-paper); }
@@ -218,6 +218,14 @@
     <div class="seg" role="group" aria-label="Direction">
       <button type="button" data-set="a" aria-pressed="true">A. Warm</button>
       <button type="button" data-set="b" aria-pressed="false">B. Cool</button>
+    </div>
+    <div class="seg only-a accent-switch" role="group" aria-label="Accent">
+      <button type="button" data-accent-set="yellow" aria-pressed="true">Yellow</button>
+      <button type="button" data-accent-set="klein" aria-pressed="false">Blue</button>
+      <button type="button" data-accent-set="moss" aria-pressed="false">Moss</button>
+      <button type="button" data-accent-set="oxblood" aria-pressed="false">Oxblood</button>
+      <button type="button" data-accent-set="ink" aria-pressed="false">Ink</button>
+      <button type="button" data-accent-set="brick" aria-pressed="false">Brick (old)</button>
     </div>
     <label class="toggle"><input type="checkbox" id="grid-toggle"> Grid overlay</label>
   </div>
@@ -613,6 +621,14 @@
   }
   heroButtons.forEach(function (b) { b.addEventListener('click', function () { setHero(b.dataset.heroSet); }); });
   setHero('revised');
+  var accentButtons = document.querySelectorAll('[data-accent-set]');
+  function setAccent(v) {
+    if (v === 'brick') delete root.dataset.accent; else root.dataset.accent = v;
+    accentButtons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.accentSet === v ? 'true' : 'false'); });
+    requestAnimationFrame(render);
+  }
+  accentButtons.forEach(function (b) { b.addEventListener('click', function () { setAccent(b.dataset.accentSet); }); });
+  setAccent('yellow');
   buttons.forEach(function (b) { b.addEventListener('click', function () { setDirection(b.dataset.set); }); });
   document.getElementById('grid-toggle').addEventListener('change', function (e) { document.getElementById('overlay').classList.toggle('on', e.target.checked); });
   window.addEventListener('resize', render);

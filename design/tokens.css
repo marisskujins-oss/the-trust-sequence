@@ -129,6 +129,14 @@
   --radius: 0px;
 }
 
+/* Accent candidates for direction A, switched by data-accent on <html>. Pick one, then delete the rest. */
+:root { --color-accent-border: transparent; --accent-rule-height: 2px; }
+:root[data-accent="yellow"] { --color-accent: #F2C230; --color-on-accent: #1B1A17; --color-accent-border: #1B1A17; --accent-rule-height: 4px; }
+:root[data-accent="klein"]  { --color-accent: #1F3FB5; --color-on-accent: #F3EEE4; }
+:root[data-accent="moss"]   { --color-accent: #4E5A2B; --color-on-accent: #F3EEE4; }
+:root[data-accent="oxblood"]{ --color-accent: #6E1E2C; --color-on-accent: #F3EEE4; }
+:root[data-accent="ink"]    { --color-accent: #1B1A17; --color-on-accent: #F3EEE4; }
+
 @media (min-width: 600px) {
   :root, :root[data-direction="a"] { --grid-margin: 40px; }
   :root[data-direction="b"] { --grid-margin: 32px; }
