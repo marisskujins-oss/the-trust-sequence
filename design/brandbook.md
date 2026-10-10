@@ -97,7 +97,7 @@ Rules are horizontal. No boxes around content except form fields. Notes and quot
 - Serve webp with a jpg fallback, an 800 px version for phones, and fixed width and height to prevent layout shift.
 
 Current photograph: Meet Magento UK 2026, file 268, cropped above the event logos.
-Caption: "Maris Skujins, second from left, on a panel at Meet Magento UK 2026."
+Caption: "Maris Skujins, third from left, on a panel at Meet Magento UK 2026."
 Credit: "Photo: Owen Billcliffe" (from the file's metadata).
 Files: `assets/meet-magento-uk-2026-panel-3x2.*` (3:2) and `assets/meet-magento-uk-2026-panel.*` (16:9).
 
