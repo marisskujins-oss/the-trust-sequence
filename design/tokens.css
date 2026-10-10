@@ -93,10 +93,12 @@
   --ratio-wide: 16 / 9;
   --ratio-portrait: 4 / 5;
 
-  /* The book cover in 3D: turned toward the copy, casting the system's only shadow */
+  /* The book cover in 3D: turned toward the copy, casting the system's only shadow.
+     Without the shadow the paper cover vanishes into the paper page, so it is a box-shadow on the turned image itself, in ink (#1B1A17) as rgba:
+     a filter shadow on the wrapper drew nothing on iPhones, where the turned image sits on a layer of its own. */
   --cover-perspective: 1600px;
   --cover-turn: 12deg;
-  --cover-shadow: drop-shadow(0 0 1px color-mix(in srgb, var(--color-ink) 28%, transparent)) drop-shadow(0 2px 3px color-mix(in srgb, var(--color-ink) 18%, transparent)) drop-shadow(0 24px 32px color-mix(in srgb, var(--color-ink) 24%, transparent));
+  --cover-shadow: 0 0 1px rgba(27, 26, 23, 0.28), 0 2px 3px rgba(27, 26, 23, 0.18), 0 24px 32px rgba(27, 26, 23, 0.24);
 
   --duration: 150ms;
 }

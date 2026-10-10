@@ -39,6 +39,8 @@ cover() {
   render cover-linkedin
   cp "$OUT/og.png" "$DIR/../../og-image.png"
   echo "copied og.png to og-image.png"
+  "$DIR/../stamp.sh" >/dev/null
+  echo "versioned the new files in the pages (design/stamp.sh)"
 }
 
 case ${1:-all} in

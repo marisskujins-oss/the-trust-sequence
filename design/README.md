@@ -11,6 +11,7 @@ The Trust Sequence design system: warm paper, Monocle, one yellow accent.
 | `brandbook.md` | The rules: what each token is for, and what is forbidden | No |
 | `email-template.html` | The email layout for MailerLite | No |
 | `templates/` | The book cover, its LinkedIn post, carousel page, quote card, podcast promo, OG image, and the render script | No |
+| `stamp.sh` | Versions the CSS, JS and image URLs in every page | No |
 
 The unpublished files are listed under `exclude` in `/_config.yml`.
 
@@ -21,10 +22,18 @@ Every page loads, in this order:
 ```html
 <link rel="preload" href="/fonts/source-serif-4-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/design/tokens.css">
-<link rel="stylesheet" href="/site.css">
-<link rel="stylesheet" href="/signup.css">
+<link rel="stylesheet" href="/design/tokens.css?v=7b2bc71d">
+<link rel="stylesheet" href="/site.css?v=a9815df6">
+<link rel="stylesheet" href="/signup.css?v=7df0f5f0">
 ```
+
+Each `?v=` is the first 8 characters of the file's SHA-1, so the values above change whenever the file does. Cloudflare tells browsers to keep CSS, JS and images for 4 hours but pages for only 10 minutes, so without it a returning visitor gets the new page with the old stylesheet after a deploy. After editing `tokens.css`, `site.css`, `signup.css`, `site.js` or `signup.js`, run:
+
+```bash
+design/stamp.sh
+```
+
+It rewrites the URLs in all five pages and changes nothing when no file has changed. `render.sh` runs it after rendering the cover.
 
 Fonts are self-hosted in `/fonts` (Latin subset, SIL Open Font License, licences alongside) and declared in `tokens.css`, together with metric-matched Georgia and Arial fallbacks so the page does not shift when the fonts arrive. No request goes to Google.
 
@@ -43,6 +52,7 @@ It should print nothing.
 3. For a text colour, check contrast on paper and paper-alt (AA, 4.5:1) and put the ratio in the brandbook.
 4. Open `specimen.html` to see the change everywhere at once.
 5. If it is a colour, copy it into `email-template.html` too; email clients cannot read variables.
+6. Run `design/stamp.sh` so returning visitors get the new file.
 
 ## Rendering the audience templates
 
@@ -60,7 +70,7 @@ The cover is `templates/cover.html`, one HTML file on a 600 by 900 canvas. The f
 design/templates/render.sh cover
 ```
 
-Then commit `design/assets/the-trust-sequence-cover-*.png` and `og-image.png`. The 3D cover on the site is the flat image turned with CSS, so it needs no render of its own.
+Then commit `design/assets/the-trust-sequence-cover-*.png`, `og-image.png` and the five pages, whose image URLs the render has re-versioned. The 3D cover on the site is the flat image turned with CSS, so it needs no render of its own.
 
 The cover comes in two variants, b (with the door, the chosen cover) and a (type only, the fallback), and two grounds, paper and ink. `data-variant` and `data-ground` on the `<html>` tag of `cover.html` set what the site shows; the render also writes all four to `out/` (`cover-a.png`, `cover-b-ink.png` and so on) for comparing. To see one in a browser, open `cover.html?variant=a&ground=ink`.
 

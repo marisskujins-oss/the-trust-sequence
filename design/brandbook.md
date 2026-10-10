@@ -69,7 +69,7 @@ Headlines in sentence case. Labels are the only capitals. No decorative italics;
 
 Breakpoints are 600, 960 and 1280 px. They are the only literal pixel values allowed outside `tokens.css`, because CSS cannot read variables inside media queries.
 
-Standard column spans from 960 px: section label 1 to 3, section headline and main column 4 to 10, home hero cover 1 to 5 and copy 7 to 12, page-head text 1 to 6 and photo 7 to 12, book page cover 1 to 3 beside the main column, prose 3 to 9. Mobile first: below 960 everything spans the full width in reading order, which is decided per section (cover before copy in the home hero, text before photo in a page head, labels before content). The cover is the one exception to full width: two of four columns on a phone, three of eight from 600 px, so it and the form both fit in the first screen and a half.
+Standard column spans from 960 px: section label 1 to 3, section headline and main column 4 to 10, home hero cover 1 to 5 and copy 7 to 12, page-head text 1 to 6 and photo 7 to 12, book page cover 1 to 3 beside the main column, prose 3 to 9. Mobile first: below 960 everything spans the full width in reading order, which is decided per section (text before photo in a page head, labels before content). The cover is the exception. From 600 px it sits beside its text, in columns 1 to 3 of eight with the text in 4 to 8. On a phone it comes first, at two of four columns, so the cover and the form both fit in the first screen and a half.
 
 Nothing is centred by default. Centre only by decision.
 

@@ -4,6 +4,7 @@ exclude:
   - linkedin-poster
   - design/brandbook.md
   - design/README.md
+  - design/stamp.sh
   - design/specimen.html
   - design/templates
   - design/email-template.html
