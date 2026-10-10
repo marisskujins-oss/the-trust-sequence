@@ -1,46 +1,71 @@
 # design/
 
-The Trust Sequence design system.
+The Trust Sequence design system: warm paper, Monocle, one yellow accent.
 
-| File | What it is |
-|---|---|
-| `specimen.html` | Open this in a browser. Both directions, every token and component, a grid overlay, and the home hero mocked with the panel photograph. |
-| `tokens.css` | The single source of every colour, size, font and spacing value. |
-| `brandbook.md` | The written rules: what each token is for, and what is forbidden. |
-| `assets/` | The cropped Meet Magento UK 2026 photograph (16:9 and 3:2). Photo: Owen Billcliffe. |
+| File | What it is | Published on the site? |
+|---|---|---|
+| `tokens.css` | The single source of every colour, size, font and spacing value | Yes, the site loads it |
+| `assets/` | The cropped Meet Magento UK 2026 photo (3:2 and 16:9, jpg and webp, full and 800 px). Photo: Owen Billcliffe | Yes |
+| `wordmark.svg` | "The Trust Sequence" outlined in Source Serif 4 at 600 | Yes |
+| `specimen.html` | Every token and component, rendered with the site's own stylesheets | No |
+| `brandbook.md` | The rules: what each token is for, and what is forbidden | No |
+| `email-template.html` | The email layout for MailerLite | No |
+| `templates/` | Carousel page, quote card, podcast promo, OG image, and the render script | No |
 
-This folder is excluded from the public site build (`_config.yml`), so none of it is served at thetrustsequence.com.
+The unpublished files are listed under `exclude` in `/_config.yml`.
 
-## Viewing the specimen
+## How the site uses the tokens
 
-Open `specimen.html` directly (double-click), or serve the repo folder and open `/design/specimen.html`. Use the A / B switch at the top. The address ends in `#a` or `#b`, so a link opens straight on one direction. Tick "Grid overlay" to see the columns.
-
-The only network requests are the fonts from Google Fonts.
-
-## Switching direction
-
-One attribute on `<html>`:
+Every page loads, in this order:
 
 ```html
-<html lang="en" data-direction="a">   <!-- warm paper, Monocle -->
-<html lang="en" data-direction="b">   <!-- cool paper, Danish -->
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/design/tokens.css">
+<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/signup.css">
 ```
 
-With no attribute, direction A applies.
+`site.css` holds the components and `signup.css` the form. Neither contains a colour or a size: everything is `var(--token)`. The only literal pixel values are the breakpoints (600, 960, 1280 px), because media queries cannot read variables. To check after an edit:
 
-## Adding a token
+```bash
+grep -nEo "#[0-9a-fA-F]{3,8}\b|[0-9.]+(px|rem|em)\b" site.css signup.css | grep -v "@media"
+```
 
-1. Add it in `tokens.css`: shared values go in the first `:root` block; values that differ go in both the A block and the B block.
-2. Name it by role, not by value: `--color-ink-muted`, not `--grey-600`.
-3. Add a row to the matching table in `brandbook.md`.
-4. If it is a colour used for text, check contrast on paper and paper-alt (AA, 4.5:1) and put the ratio in the brandbook.
+It should print nothing.
 
-Breakpoints cannot be custom properties inside media queries, so they are fixed numbers: 600, 960 and 1280 px. `--grid-columns` changes with them inside `tokens.css`.
+## Adding or changing a token
 
-## How the site will use the tokens (step 2)
+1. Edit `tokens.css`. Name tokens by role, not by value: `--color-ink-muted`, not `--grey-600`.
+2. Add or update the row in `brandbook.md`.
+3. For a text colour, check contrast on paper and paper-alt (AA, 4.5:1) and put the ratio in the brandbook.
+4. Open `specimen.html` to see the change everywhere at once.
+5. If it is a colour, copy it into `email-template.html` too; email clients cannot read variables.
 
-- Each page links `/design/tokens.css` (served from that path once step 2 moves it into the build) before its own styles.
-- Page and component styles use only `var(--token)` values. No hex codes and no pixel sizes outside `tokens.css`, apart from 1 px borders that already read `--rule-width`.
-- The chosen direction is fixed on `<html>`, and the losing direction is removed from `tokens.css` and the brandbook.
-- Fonts load with one Google Fonts `<link>` per page for the chosen families and weights only.
-- `signup.js` keeps its contract; only `signup.css` is restyled from the tokens.
+## Rendering the audience templates
+
+```bash
+design/templates/render.sh
+```
+
+This renders all four templates to `design/templates/out/` with headless Chrome and copies the OG image to `/og-image.png`. Fonts load from Google Fonts, so it needs a connection.
+
+To render one template with your own copy, pass its name and a query string:
+
+```bash
+design/templates/render.sh quote "?quote=%22Too%20small%20costs%20you%20too%20much.%22&cite=Maris%20Skujins"
+```
+
+Fields per template:
+
+| Template | Size | Fields |
+|---|---|---|
+| `carousel` | 1080 by 1350 | `page`, `label`, `title`, `body`, `footer` |
+| `quote` | 1080 by 1080 | `quote`, `cite` |
+| `podcast` | 1920 by 1080 | `date`, `show`, `title`, `body`, `caption`, `footer` |
+| `og` | 1200 by 630 | none; edit `og.html` |
+
+Write any new copy in the write-like-maris voice. No em dashes.
+
+## Applying the email template
+
+Open `email-template.html`, copy everything, and paste it into a MailerLite custom HTML email. Replace the part between `CONTENT START` and `CONTENT END` for each email. The merge tags `{$name|default('there')}` and `{$unsubscribe}` follow MailerLite's syntax; send yourself a test before using it.
