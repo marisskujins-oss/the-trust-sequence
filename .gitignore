@@ -1,0 +1,15 @@
+# Allow-list: only the public site and the poster service are tracked.
+# Everything else in this folder (book working files, transcripts, keys) stays local.
+/*
+!/.gitignore
+!/_config.yml
+!/CNAME
+!/index.html
+!/about/
+!/excerpt/
+!/privacy/
+!/og-image.png
+!/sitemap.xml
+!/robots.txt
+!/linkedin-poster/
+.DS_Store
