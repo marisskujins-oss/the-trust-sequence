@@ -123,6 +123,39 @@
   .proof { display: flex; align-items: baseline; gap: var(--space-3); padding-top: var(--space-4); border-top: var(--rule-width) solid var(--color-rule); }
   .proof-num { font-family: var(--font-display); font-weight: var(--weight-display); font-size: var(--size-h2); line-height: 1; }
 
+  /* Revised hero (conversion) */
+  .hero-head { align-items: center; row-gap: var(--space-4); }
+  .hero-head .hero-switch { grid-column: 1 / -1; justify-self: start; }
+  @media (min-width: 960px) { .hero-head .hero-switch { grid-column: 9 / 13; justify-self: end; } }
+  :root[data-direction="a"][data-hero="revised"] .v-current { display: none; }
+  :root[data-hero="current"] .v-revised { display: none; }
+  .rev .hero { padding-block: var(--space-6) var(--space-8); }
+  @media (min-width: 600px) { .rev .hero { padding-block: var(--space-8) var(--space-9); } }
+  .rev .text, .rev .media { grid-column: 1 / -1; }
+  @media (min-width: 960px) {
+    .rev .text { grid-column: 1 / 7; }
+    .rev .media { grid-column: 7 / 13; margin-top: calc(var(--space-6) + var(--space-5)); }
+  }
+  .rev-headline { text-wrap: balance; font-family: var(--font-display); font-weight: var(--weight-display); font-size: var(--size-h1); line-height: var(--leading-tight); letter-spacing: var(--tracking-display); }
+  .offer { font-size: var(--size-body); font-weight: var(--weight-strong); color: var(--color-ink); }
+  .nav-late { color: var(--color-ink) !important; }
+  .contents { border-top: var(--rule-width) solid var(--color-ink); border-bottom: var(--rule-width) solid var(--color-ink); }
+  .contents .container { position: relative; }
+  .contents-list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 600px) { .contents-list { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .contents-list a { display: flex; gap: var(--space-3); align-items: baseline; padding-block: var(--space-4); font-size: var(--size-small); font-weight: var(--weight-strong); text-decoration: none; }
+  .contents-list a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .contents .pin { position: absolute; right: var(--grid-margin); top: var(--space-4); }
+  .outline { padding-block: var(--space-7); }
+  .outline-title { margin-bottom: var(--space-4); }
+  .outline-row { display: grid; gap: var(--space-2); padding-block: var(--space-4); border-top: var(--rule-width) solid var(--color-rule); }
+  @media (min-width: 960px) { .outline-row { grid-template-columns: 2fr 7fr 3fr; column-gap: var(--grid-gutter); align-items: baseline; } .outline-row > a { justify-self: end; } }
+  .pin { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; margin-left: var(--space-2); border: var(--rule-width) solid var(--color-ink); border-radius: 50%; font-family: var(--font-text); font-size: 11px; font-weight: var(--weight-strong); line-height: 1; letter-spacing: 0; vertical-align: middle; color: var(--color-ink); background: var(--color-paper); text-transform: none; }
+  :root[data-notes="off"] .pin { display: none; }
+  .todo { background: var(--color-paper-alt); color: var(--color-ink); padding: 0 var(--space-1); }
+  .notes { margin-top: var(--space-6); padding-left: var(--space-5); display: grid; gap: var(--space-3); max-width: var(--measure); font-size: var(--size-small); color: var(--color-ink-soft); }
+  .notes strong { color: var(--color-ink); font-weight: var(--weight-strong); }
+
   /* Framework card */
   .cards { display: grid; gap: var(--grid-gutter); grid-template-columns: 1fr; }
   @media (min-width: 600px) { .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
@@ -204,9 +237,16 @@
 <!-- Home hero mock -->
 <section class="section" aria-labelledby="hero-label">
   <div class="container">
-    <div class="section-head"><p class="label" id="hero-label">01 Home page hero</p></div>
+    <div class="section-head hero-head">
+      <p class="label" id="hero-label">01 Home page hero</p>
+      <div class="seg hero-switch only-a" role="group" aria-label="Hero version">
+        <button type="button" data-hero-set="current" aria-pressed="false">Current</button>
+        <button type="button" data-hero-set="revised" aria-pressed="true">Revised for signups</button>
+      </div>
+    </div>
   </div>
-  <div class="container">
+
+  <div class="container v-current">
     <div class="mock">
       <nav class="nav" aria-label="Mock navigation">
         <div class="container">
@@ -267,6 +307,77 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="container v-revised only-a">
+    <div class="mock rev">
+      <nav class="nav" aria-label="Mock navigation, revised">
+        <div class="container">
+          <a href="#" class="wordmark">The Trust Sequence</a>
+          <div class="nav-links"><a href="#">Read an Excerpt</a><a href="#">About</a><a href="#" class="link nav-late">Get Early Access</a><span class="pin">8</span></div>
+          <button type="button" class="nav-menu">Menu</button>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div class="container">
+          <div class="grid">
+            <div class="text stack">
+              <div class="eyebrow-row"><hr class="rule-accent"><p class="label">The Trust Sequence. A book in development.</p></div>
+              <h2 class="rev-headline">Walk out with a yes you can walk back in on.<span class="pin">1</span></h2>
+              <p class="lead">For the founder asking for budget, the project manager who needs a sign-off, and the owner deciding which supplier to trust.<span class="pin">2</span></p>
+              <form class="signup" onsubmit="return false">
+                <p class="offer">Free: read the chapters as they are written, before anyone else.<span class="pin">3</span></p>
+                <div class="signup-row">
+                  <input class="input" type="email" placeholder="Your email" aria-label="Email address">
+                  <button class="btn btn-primary" type="submit">Send me the chapters</button>
+                </div>
+                <p class="small"><a class="link" href="#">Or read chapter one first</a><span class="pin">4</span></p>
+              </form>
+              <div class="proof"><span class="proof-num">600+</span><span class="label label-muted">Recorded conversations</span><span class="pin">5</span></div>
+            </div>
+            <figure class="media photo ratio-landscape">
+              <img src="assets/meet-magento-uk-2026-panel-3x2.jpg" alt="Maris Skujins and three other speakers in armchairs on a stage, mid-conversation" width="1350" height="900">
+              <figcaption><span>Maris Skujins <mark class="todo">[position to confirm]</mark> on a panel at Meet Magento UK 2026.<span class="pin">5</span></span><span>Photo: Owen Billcliffe</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <nav class="contents" aria-label="On this page">
+        <div class="container">
+          <ol class="contents-list">
+            <li><a href="#"><span class="label label-muted">01</span> The book</a></li>
+            <li><a href="#"><span class="label label-muted">02</span> Frameworks</a></li>
+            <li><a href="#"><span class="label label-muted">03</span> The author</a></li>
+            <li><a href="#"><span class="label label-muted">04</span> Chapter one</a></li>
+          </ol>
+          <span class="pin">6</span>
+        </div>
+      </nav>
+
+      <div class="outline">
+        <div class="container">
+          <p class="label label-muted outline-title">Page order below the hero<span class="pin">7</span></p>
+          <div class="outline-row"><p class="label">01 The book</p><div><p class="h3">Most decisions don't stall on price. They stall on trust.</p><p class="small">The four book points. The rest of the old hero paragraph moves here.</p></div><a class="link small" href="#">Get Early Access</a></div>
+          <div class="outline-row"><p class="label">02 Frameworks</p><div><p class="h3">Named frameworks for specific moments</p><p class="small">Three cards, then "+ 10 more frameworks inside the book".</p></div><a class="link small" href="#">Get Early Access</a></div>
+          <div class="outline-row"><p class="label">03 The author</p><div><p class="h3">Maris Skujins</p><p class="small">Short bio, the proof numbers, and "I sell for a living".</p></div><a class="link small" href="#">Get Early Access</a></div>
+          <div class="outline-row"><p class="label">04 Chapter one</p><div><p class="h3">Read an excerpt: The Three Doors</p><p class="small">The first lines of the chapter, then a link to the full excerpt.</p></div><a class="link small" href="#">Read chapter one</a></div>
+          <div class="outline-row"><p class="label">Signup</p><div><p class="h3">Read the chapters before the book.</p><p class="small">The full form with first name, as on the site today.</p></div><span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <ol class="notes">
+      <li><strong>Promise first.</strong> The reader's gain is the headline; the book title becomes the label above it. New copy, for approval.</li>
+      <li><strong>One sentence, then the form.</strong> The hero copy drops from about 60 words to 22, so the form sits above the fold on a phone.</li>
+      <li><strong>The offer is the loudest line before the button.</strong> Body size, full ink, strong weight. No colour added.</li>
+      <li><strong>A second, smaller way in.</strong> People who want to sample first go to the excerpt, which ends in the same form. New copy, for approval.</li>
+      <li><strong>Who wrote it, and why trust it.</strong> The caption names you; 600+ sits under the form. Needs your position in the photo.</li>
+      <li><strong>Contents strip.</strong> Four numbered links, the Monocle way of showing what is on the page. Each section opens with the same number.</li>
+      <li><strong>Frameworks before the author, and every section ends on a text link to the form.</strong> No extra buttons, so the accent is still used once.</li>
+      <li><strong>No competing button in the nav.</strong> A text link that only appears once the hero form has scrolled out of view.</li>
+    </ol>
   </div>
 </section>
 
@@ -495,6 +606,13 @@
     requestAnimationFrame(render);
   }
 
+  var heroButtons = document.querySelectorAll('[data-hero-set]');
+  function setHero(v) {
+    root.dataset.hero = v;
+    heroButtons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.heroSet === v ? 'true' : 'false'); });
+  }
+  heroButtons.forEach(function (b) { b.addEventListener('click', function () { setHero(b.dataset.heroSet); }); });
+  setHero('revised');
   buttons.forEach(function (b) { b.addEventListener('click', function () { setDirection(b.dataset.set); }); });
   document.getElementById('grid-toggle').addEventListener('change', function (e) { document.getElementById('overlay').classList.toggle('on', e.target.checked); });
   window.addEventListener('resize', render);
