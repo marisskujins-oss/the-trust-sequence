@@ -1,27 +1,48 @@
 #!/usr/bin/env bash
-# Render every template to PNG:  design/templates/render.sh
-# Custom copy for one template:  design/templates/render.sh quote "?quote=...&cite=Maris%20Skujins"
-# Output goes to design/templates/out/. The OG image is also copied to the site root.
+# Render every template to PNG:            design/templates/render.sh
+# The cover and everything made from it:   design/templates/render.sh cover
+# Custom copy for one template:            design/templates/render.sh quote "?quote=...&cite=Maris%20Skujins"
+# Output goes to design/templates/out/. The OG image is also copied to the site root,
+# and the site's cover images to design/assets/.
 set -euo pipefail
 DIR="$(cd "$(dirname "$0")" && pwd)"
 CHROME="${CHROME:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
 OUT="$DIR/out"
+ASSETS="$DIR/../assets"
 mkdir -p "$OUT"
 
+size() { case $1 in carousel) echo "1080,1350";; quote) echo "1080,1080";; podcast) echo "1920,1080";; og) echo "1200,630";; cover) echo "600,900";; cover-linkedin) echo "1080,1350";; esac; }
+
+# render <template> [query] [output name] [scale]. Scale 3 turns the 600 by 900 cover into 1800 by 2700.
 render() {
-  local name=$1 w=$2 h=$3 query=${4:-}
+  local name=$1 query=${2:-} file=${3:-$1} scale=${4:-1}
   "$CHROME" --headless=new --disable-gpu --hide-scrollbars --allow-file-access-from-files \
-    --virtual-time-budget=8000 --window-size="$w,$h" --screenshot="$OUT/$name.png" \
-    "file://$DIR/$name.html$query" >/dev/null 2>&1
-  echo "$OUT/$name.png"
+    --virtual-time-budget=8000 --force-device-scale-factor="$scale" --window-size="$(size "$name")" \
+    --screenshot="$OUT/$file.png" "file://$DIR/$name.html$query" >/dev/null 2>&1
+  echo "$OUT/$file.png"
 }
 
-size() { case $1 in carousel) echo "1080 1350";; quote) echo "1080 1080";; podcast) echo "1920 1080";; og) echo "1200 630";; esac; }
-
-if [ $# -ge 1 ]; then
-  render "$1" $(size "$1") "${2:-}"
-else
-  for t in carousel quote podcast og; do render "$t" $(size "$t"); done
+# The cover, then everything made from it. cover.html decides which variant the site shows.
+cover() {
+  render cover "" cover 3
+  render cover "?ground=ink" cover-ink 3
+  for v in a b; do
+    render cover "?variant=$v" "cover-$v" 3
+    render cover "?variant=$v&ground=ink" "cover-$v-ink" 3
+  done
+  render cover "" cover-600 1
+  render cover "" cover-1200 2
+  cp "$OUT/cover-600.png" "$ASSETS/the-trust-sequence-cover-600.png"
+  cp "$OUT/cover-1200.png" "$ASSETS/the-trust-sequence-cover-1200.png"
+  echo "copied the site's cover to design/assets/"
+  render og
+  render cover-linkedin
   cp "$OUT/og.png" "$DIR/../../og-image.png"
   echo "copied og.png to og-image.png"
-fi
+}
+
+case ${1:-all} in
+  all) cover; for t in carousel quote podcast; do render "$t"; done ;;
+  cover|og|cover-linkedin) cover ;;
+  *) render "$1" "${2:-}" ;;
+esac
