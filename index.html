@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-offer="chapters">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +17,7 @@
 <meta name="twitter:description" content="How trust gets earned before a yes, from both sides of the table. Built from 600+ recorded conversations, not theory.">
 <meta name="twitter:image" content="https://thetrustsequence.com/og-image.png">
 <link rel="canonical" href="https://thetrustsequence.com/">
+<link rel="stylesheet" href="/signup.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
@@ -56,6 +57,10 @@
   .hero-cta { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: var(--teal); color: var(--paper); border: none; border-radius: var(--radius); padding: 0.85rem 2rem; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; opacity: 0; animation: fadeUp 0.6s ease 0.65s forwards; }
   .hero-cta:hover { background: var(--teal-deep); transform: translateY(-1px); }
   .hero-cta svg { width: 14px; height: 14px; }
+  .hero-signup { max-width: 460px; margin: 0 auto; opacity: 0; animation: fadeUp 0.6s ease 0.65s forwards; }
+  .hero-offer { font-size: 13.5px; color: rgba(247,244,238,0.8); line-height: 1.6; margin-bottom: 1rem; }
+  .hero-offer em { font-family: var(--serif); font-size: 1.05em; color: var(--accent-soft); }
+  .hero-proof { margin-top: 1rem; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(247,244,238,0.35); }
   .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); opacity: 0; animation: fadeUp 0.6s ease 1s forwards; }
   .hero-scroll span { display: block; width: 1px; height: 40px; background: rgba(255,255,255,0.15); margin: 0 auto; position: relative; overflow: hidden; }
   .hero-scroll span::after { content: ''; display: block; width: 1px; height: 40px; background: var(--accent); animation: scrollLine 2s ease infinite; }
@@ -101,28 +106,6 @@
   .cta-section .section-eyebrow { color: var(--teal-soft); }
   .cta-section .section-title { color: var(--paper); font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 1.25rem; }
   .cta-section .section-desc { color: rgba(247,244,238,0.55); margin: 0 auto 1.75rem; }
-  .cta-deliverables { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin: 0 auto 2rem; max-width: 380px; text-align: left; }
-  .cta-deliverables li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 13.5px; color: rgba(247,244,238,0.7); line-height: 1.5; }
-  .cta-deliverables li::before { content: ''; display: inline-block; width: 16px; height: 16px; min-width: 16px; background: var(--teal); border-radius: 50%; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 12.75l6 6 9-13.5'/%3E%3C/svg%3E"); background-size: 10px; background-repeat: no-repeat; background-position: center; margin-top: 2px; }
-  .signup-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 2rem; max-width: 520px; margin: 0 auto; overflow: hidden; }
-  .email-form { display: flex; flex-direction: column; gap: 0.75rem; }
-  .email-inputs { display: flex; flex-direction: column; gap: 0.75rem; }
-  .email-inputs input { flex: 1; }
-  .email-form button { width: 100%; }
-  .email-form input { font-family: var(--sans); font-size: 14px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.28); border-radius: var(--radius); color: var(--paper); padding: 0.85rem 1rem; outline: none; transition: border-color 0.15s, background 0.15s; }
-  .email-form input:focus { border-color: var(--teal-soft); background: rgba(255,255,255,0.2); }
-  .email-form input::placeholder { color: rgba(247,244,238,0.5); }
-  .email-form button { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0.04em; background: var(--accent); color: var(--paper); border: none; border-radius: var(--radius); padding: 1rem 1.5rem; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 24px rgba(184,92,42,0.35); }
-  .email-form button:hover { background: #a04e22; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(184,92,42,0.45); }
-  .email-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
-  .email-note { font-size: 11px; color: rgba(247,244,238,0.25); margin-top: 1rem; }
-  .email-success { display: none; text-align: center; padding: 1rem 0; }
-  .email-success.show { display: block; }
-  .email-success .check-circle { width: 48px; height: 48px; background: var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; animation: popIn 0.35s ease; }
-  .email-success .check-circle svg { width: 22px; height: 22px; color: white; }
-  .email-success h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.5rem; }
-  .email-success p { font-size: 14px; color: rgba(247,244,238,0.5); }
-  @keyframes popIn { 0% { transform: scale(0); } 70% { transform: scale(1.1); } 100% { transform: scale(1); } }
   footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem 1.5rem; text-align: center; }
   .footer-logo { font-family: var(--serif); font-size: 1rem; color: rgba(247,244,238,0.4); margin-bottom: 0.5rem; }
   .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
@@ -137,8 +120,6 @@
     .section { padding: 6rem 2rem; }
     .book-grid { grid-template-columns: 1fr 1fr; }
     .framework-cards { grid-template-columns: 1fr 1fr 1fr; }
-    .email-inputs { flex-direction: row; }
-    .email-form input { flex: 1; }
   }
   @media (min-width: 900px) {
     .section { padding: 7rem 2rem; }
@@ -249,10 +230,25 @@
     <h1 class="hero-title">The Trust Sequence</h1>
     <p class="hero-subtitle-line">Walk Out With a Yes</p>
     <p class="hero-desc">For the founder asking for budget, the project manager who needs a sign-off, and the owner deciding which supplier to trust. Whichever chair you are in, trust gets earned in the same order. This book shows you that order, so the yes you walk out with is one you can walk back in on.</p>
-    <a href="#early-access" class="hero-cta">
-      Get Early Access
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </a>
+    <div class="hero-signup">
+      <p class="hero-offer offer-chapters">Free: read the chapters as they are written, before anyone else.</p>
+      <p class="hero-offer offer-report">Free: <em>What 600+ recorded conversations taught me.</em> The patterns in the ones that closed.</p>
+      <div class="signup-card signup-card--inline">
+        <form class="email-form" data-signup novalidate>
+          <div class="email-inputs">
+            <input type="email" name="email" placeholder="Your email" aria-label="Email address" autocomplete="email" required>
+            <button type="submit"><span class="offer-chapters">Send me the chapters</span><span class="offer-report">Send me the report</span></button>
+          </div>
+          <p class="form-error" role="alert" hidden></p>
+        </form>
+      </div>
+      <div class="email-success" role="status">
+        <h3>You're in</h3>
+        <p class="offer-chapters">Check your inbox. The first email is on its way.</p>
+        <p class="offer-report">Check your inbox. The report is in the first email.</p>
+      </div>
+      <p class="hero-proof">Built from 600+ recorded conversations</p>
+    </div>
   </div>
   <div class="hero-scroll"><span></span></div>
 </section>
@@ -355,28 +351,34 @@
 
 <section class="section cta-section" id="early-access">
   <div class="section-inner">
-    <p class="section-eyebrow reveal">Free Early Access</p>
-    <h2 class="section-title reveal">Get it before it's published.</h2>
-    <p class="section-desc reveal">Drop your email and you'll be first to get the book when it's ready. No course, no sequence — just the work, straight to your inbox.</p>
+    <p class="section-eyebrow reveal">Free for subscribers</p>
+    <h2 class="section-title reveal offer-chapters">Read the chapters before the book.</h2>
+    <h2 class="section-title reveal offer-report">What 600+ recorded conversations taught me.</h2>
+    <p class="section-desc reveal offer-chapters">The book is in development. Join the list and you'll get chapters as they're written, before anyone else, and the full book when it's done.</p>
+    <p class="section-desc reveal offer-report">The patterns in the ones that closed, written for both sides of the table. Free when you join the list, and the chapters follow as they're written.</p>
     <ul class="cta-deliverables reveal">
-      <li>The full book when it's ready — before anyone else</li>
+      <li class="offer-report">The report, in your first email</li>
+      <li>Chapters as they're written, before anyone else</li>
+      <li>The full book before it's published</li>
     </ul>
-    <div class="signup-card reveal" id="signup-form">
-      <div class="email-form">
+    <div class="signup-card reveal">
+      <form class="email-form" data-signup novalidate>
         <div class="email-inputs">
-          <input type="text" id="name-input" placeholder="First name" aria-label="First name" autocomplete="given-name">
-          <input type="email" id="email-input" placeholder="Work email" aria-label="Email address" autocomplete="email" required>
+          <input type="text" name="name" placeholder="First name" aria-label="First name" autocomplete="given-name">
+          <input type="email" name="email" placeholder="Email" aria-label="Email address" autocomplete="email" required>
         </div>
-        <button type="button" id="submit-btn" onclick="handleSignup()">Notify Me</button>
-      </div>
-      <p class="email-note">No spam. No funnels. Unsubscribe any time.</p>
+        <button type="submit"><span class="offer-chapters">Send me the chapters</span><span class="offer-report">Send me the report</span></button>
+        <p class="form-error" role="alert" hidden></p>
+      </form>
+      <p class="email-note">No spam. No funnels. Unsubscribe any time. <a href="/privacy/">How your email is handled</a>.</p>
     </div>
-    <div class="email-success" id="signup-success">
+    <div class="email-success" role="status">
       <div class="check-circle">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
       </div>
       <h3>You're in</h3>
-      <p>First framework lands in your inbox soon. The rest comes with the book.</p>
+      <p class="offer-chapters">Check your inbox. The first email is on its way, and the chapters follow as they're written.</p>
+      <p class="offer-report">Check your inbox. The report is in the first email.</p>
     </div>
   </div>
 </section>
@@ -398,37 +400,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-function handleSignup() {
-  const name = document.getElementById('name-input').value.trim();
-  const email = document.getElementById('email-input').value.trim();
-  const btn = document.getElementById('submit-btn');
-  if (!email || !email.includes('@')) {
-    document.getElementById('email-input').style.borderColor = '#c0392b';
-    setTimeout(() => { document.getElementById('email-input').style.borderColor = ''; }, 1500);
-    return;
-  }
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-
-  fetch('https://poster.thetrustsequence.com/subscribe', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email }),
-  })
-  .then(() => {
-    document.getElementById('signup-form').style.display = 'none';
-    document.querySelector('.email-note').style.display = 'none';
-    document.getElementById('signup-success').classList.add('show');
-  })
-  .catch(() => {
-    btn.disabled = false;
-    btn.textContent = 'Notify Me';
-    document.getElementById('email-input').style.borderColor = '#c0392b';
-    setTimeout(() => { document.getElementById('email-input').style.borderColor = ''; }, 2000);
-  });
-}
-document.getElementById('email-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') handleSignup(); });
-
 const burger = document.getElementById('nav-burger');
 const mobileMenu = document.getElementById('nav-mobile-menu');
 burger.addEventListener('click', () => {
@@ -445,5 +416,6 @@ document.addEventListener('click', (e) => {
   if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) closeMobileMenu();
 });
 </script>
+<script src="/signup.js"></script>
 </body>
 </html>
