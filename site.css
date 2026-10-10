@@ -91,8 +91,9 @@ a { color: inherit; }
 .hero .text { gap: var(--space-5); }
 @media (min-width: 600px) { .hero { padding-block: var(--space-8) var(--space-10); } }
 
-/* Book cover. The image is rendered from design/templates/cover.html; the turn and shadow are CSS. */
-.cover-3d img { width: 100%; transform: perspective(var(--cover-perspective)) rotateY(var(--cover-turn)); transform-origin: left center; box-shadow: var(--cover-shadow); }
+/* Book cover. One image with the turn and the shadow in it, rendered by design/templates/cover-3d.html. It is larger than
+   the cover by the shadow's margins (--cover-bake-*), so these put the cover's face on the column and let the shadow overhang. */
+.cover-3d img { max-width: none; width: calc((var(--cover-bake-face) + var(--cover-bake-left) + var(--cover-bake-right)) / var(--cover-bake-face) * 100%); margin: calc(var(--cover-bake-top) / var(--cover-bake-face) * -100%) 0 calc(var(--cover-bake-bottom) / var(--cover-bake-face) * -100%) calc(var(--cover-bake-left) / var(--cover-bake-face) * -100%); }
 
 /* Photograph */
 .photo img { width: 100%; object-fit: cover; }

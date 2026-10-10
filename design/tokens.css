@@ -93,12 +93,18 @@
   --ratio-wide: 16 / 9;
   --ratio-portrait: 4 / 5;
 
-  /* The book cover in 3D: turned toward the copy, casting the system's only shadow.
-     Without the shadow the paper cover vanishes into the paper page, so it is a box-shadow on the turned image itself, in ink (#1B1A17) as rgba:
-     a filter shadow on the wrapper drew nothing on iPhones, where the turned image sits on a layer of its own. */
-  --cover-perspective: 1600px;
+  /* The book cover in 3D is an image, rendered by design/templates/cover-3d.html: the 600 px cover turned toward the copy,
+     with the system's only shadow (ink, #1B1A17, at low opacity), on a transparent canvas larger than the cover by the
+     margins below, in px of the 600 px cover. The site shows it as a plain image, so every browser draws the same thing,
+     and uses the same margins to put the cover's face, not its shadow, on the grid. */
+  --cover-perspective: 2100px;
   --cover-turn: 12deg;
-  --cover-shadow: 0 0 1px rgba(27, 26, 23, 0.28), 0 2px 3px rgba(27, 26, 23, 0.18), 0 24px 32px rgba(27, 26, 23, 0.24);
+  --cover-shadow: 0 0 1px rgba(27, 26, 23, 0.28), 0 3px 4px rgba(27, 26, 23, 0.18), 0 32px 44px rgba(27, 26, 23, 0.24);
+  --cover-bake-face: 600;
+  --cover-bake-left: 50;
+  --cover-bake-top: 20;
+  --cover-bake-right: 50;
+  --cover-bake-bottom: 80;
 
   --duration: 150ms;
 }

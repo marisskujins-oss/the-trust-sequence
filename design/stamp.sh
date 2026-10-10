@@ -7,7 +7,8 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 PAGES=(index.html about/index.html book/index.html excerpt/index.html privacy/index.html)
 ASSETS=(design/tokens.css site.css signup.css site.js signup.js og-image.png
-  design/assets/the-trust-sequence-cover-600.png design/assets/the-trust-sequence-cover-1200.png)
+  design/assets/the-trust-sequence-cover-600.png design/assets/the-trust-sequence-cover-1200.png
+  design/assets/the-trust-sequence-cover-3d-700.png design/assets/the-trust-sequence-cover-3d-1400.png)
 for asset in "${ASSETS[@]}"; do
   v=$(shasum "$asset" | cut -c1-8)
   ASSET="$asset" V="$v" perl -pi -e 's#/\Q$ENV{ASSET}\E(\?v=[0-9a-f]*)?(?=["\s,])#/$ENV{ASSET}?v=$ENV{V}#g' "${PAGES[@]}"

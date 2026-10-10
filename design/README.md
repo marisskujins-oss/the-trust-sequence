@@ -5,7 +5,7 @@ The Trust Sequence design system: warm paper, Monocle, one yellow accent.
 | File | What it is | Published on the site? |
 |---|---|---|
 | `tokens.css` | The single source of every colour, size, font and spacing value | Yes, the site loads it |
-| `assets/` | The cropped Meet Magento UK 2026 photo (3:2 and 16:9, jpg and webp, full and 800 px). Photo: Owen Billcliffe. The book cover at 600 and 1200 px, rendered from `templates/cover.html` | Yes |
+| `assets/` | The cropped Meet Magento UK 2026 photo (3:2 and 16:9, jpg and webp, full and 800 px). Photo: Owen Billcliffe. The book cover, flat at 600 and 1200 px and in 3D at 700 and 1400 px, rendered from `templates/` | Yes |
 | `wordmark.svg` | "The Trust Sequence" outlined in Source Serif 4 at 600 | Yes |
 | `specimen.html` | Every token and component, rendered with the site's own stylesheets | No |
 | `brandbook.md` | The rules: what each token is for, and what is forbidden | No |
@@ -64,13 +64,13 @@ This renders every template to `design/templates/out/` with headless Chrome, cop
 
 ## Changing the cover
 
-The cover is `templates/cover.html`, one HTML file on a 600 by 900 canvas. The flat cover (1800 by 2700), the site's cover images, the OG image and the LinkedIn post are all rendered from it, so a change to the cover is an edit to that file and one command:
+The cover is `templates/cover.html`, one HTML file on a 600 by 900 canvas. The flat cover (1800 by 2700), the site's flat and 3D cover images, the OG image and the LinkedIn post are all rendered from it, so a change to the cover is an edit to that file and one command:
 
 ```bash
 design/templates/render.sh cover
 ```
 
-Then commit `design/assets/the-trust-sequence-cover-*.png`, `og-image.png` and the five pages, whose image URLs the render has re-versioned. The 3D cover on the site is the flat image turned with CSS, so it needs no render of its own.
+Then commit `design/assets/the-trust-sequence-cover-*.png`, `og-image.png` and the five pages, whose image URLs the render has re-versioned. The 3D cover on the site is an image too: `cover-3d.html` turns the flat cover and adds its shadow, and the render saves both in the picture, so every browser shows the same thing.
 
 The cover comes in two variants, b (with the door, the chosen cover) and a (type only, the fallback), and two grounds, paper and ink. `data-variant` and `data-ground` on the `<html>` tag of `cover.html` set what the site shows; the render also writes all four to `out/` (`cover-a.png`, `cover-b-ink.png` and so on) for comparing. To see one in a browser, open `cover.html?variant=a&ground=ink`.
 
@@ -91,6 +91,7 @@ Fields per template:
 | `podcast` | 1920 by 1080 | `date`, `show`, `title`, `body`, `caption`, `footer` |
 | `og` | 1200 by 630 | none; edit `og.html`. Rendered with the cover, since it shows it |
 | `cover` | 600 by 900, rendered at 1800 by 2700 | `variant` (a or b), `ground` (paper or ink); see Changing the cover |
+| `cover-3d` | 700 by 1000, transparent, at 1x and 2x | none; the turn, the shadow and the margins are `--cover-*` tokens in `tokens.css`. Rendered with the cover |
 | `cover-linkedin` | 1080 by 1350 | none; edit `cover-linkedin.html`. Rendered with the cover |
 
 Write any new copy in the write-like-maris voice. No em dashes.

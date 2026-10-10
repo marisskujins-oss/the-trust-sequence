@@ -122,7 +122,7 @@ Used in section 03 The author on the home page and at the top of the about page.
 
 **Quote.** Left-aligned, 1 px ink rule on the left, the serif at h1 (or h2 inside prose), attribution as a muted label. No quotation-mark graphics.
 
-**Book cover.** The flat image rendered from `templates/cover.html`, turned toward the copy with CSS (`--cover-turn`, 12 degrees, and `--cover-perspective`) and given the system's only shadow (`--cover-shadow`), which also gives the paper cover an edge against the paper page. In 3D in the home hero and beside "Why I wrote it" on the book page; flat wherever the cover is small. Not on the about page, where the photograph does the work.
+**Book cover.** In 3D in the home hero and beside "Why I wrote it" on the book page: one image, rendered by `templates/cover-3d.html` from the flat cover, turned 12 degrees toward the copy (`--cover-turn`, `--cover-perspective`) with the system's only shadow (`--cover-shadow`), which also gives the paper cover an edge against the paper page. The turn and the shadow are in the image, not in the site's CSS, so every browser shows the same thing; the `--cover-bake-*` margins put the cover's face, not its shadow, on the grid. Flat wherever the cover is small. Not on the about page, where the photograph does the work.
 
 **Proof number.** The number in the serif at h2 with its label, a hairline above.
 
@@ -177,7 +177,7 @@ A mock cover, so the site reads as a book site until the publisher or a designer
 - **Front.** The title in the serif, set large and broken where the words break, "The Trust / Sequence". The subtitle as a tracked label. The author at the foot. The accent rule above the title, and nothing else: no tagline, no numbers, no blurb. Those live on the site.
 - **Variants.** b is the cover, chosen on 10 October 2026: the type plus a door, slightly open, drawn as three straight lines and standing on the author's baseline. The Three Doors is framework 01 and the excerpt, so the door says the book's first idea without a word. a, type only, stays in `cover.html` as the fallback: if the door ever reads as a logo or clip art, ship a. `data-variant` in `cover.html` picks the one the site shows.
 - **Grounds.** Paper is the default and the only one on the site. Ink, with paper type, is for dark settings: the OG image and the LinkedIn post. The accent stays off a dark ground, so on ink the rule is paper.
-- **Outputs.** `render.sh cover` writes the flat cover in both variants and both grounds, the site's 600 and 1200 px images, the OG image (the ink cover on the left third, the headline on the right) and the LinkedIn post. See `README.md`.
+- **Outputs.** `render.sh cover` writes the flat cover in both variants and both grounds, the site's flat 600 and 1200 px images and its 3D image (700 and 1400 px, transparent), the OG image (the ink cover on the left third, the headline on the right) and the LinkedIn post. See `README.md`.
 - **Checked.** The title reads at 80 px wide on a light and a dark feed, in both grounds.
 
 The interior will use this system too. That work has not started.
