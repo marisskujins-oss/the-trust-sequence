@@ -31,7 +31,7 @@ Fonts are self-hosted in `/fonts` (Latin subset, SIL Open Font License, licences
 `site.css` holds the components and `signup.css` the form. Neither contains a colour or a size: everything is `var(--token)`. The only literal pixel values are the breakpoints (600, 960, 1280 px), because media queries cannot read variables. To check after an edit:
 
 ```bash
-grep -nEo "#[0-9a-fA-F]{3,8}\b|[0-9.]+(px|rem|em)\b" site.css signup.css | grep -v "@media"
+grep -nE "#[0-9a-fA-F]{3,8}\b|[0-9.]+(px|rem|em)\b" site.css signup.css | grep -v "@media"
 ```
 
 It should print nothing.

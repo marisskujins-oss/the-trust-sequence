@@ -41,7 +41,7 @@ Two families, three weights.
 
 **Why Source Serif 4.** The site used DM Serif Display, which exists in one weight only. DM Serif was drawn from Source Serif. Source Serif 4 keeps the letter shapes and goes one step heavier, so a headline holds the page without going to capitals.
 
-**Why Schibsted Grotesk.** Made for a Scandinavian newspaper group: editorial, slightly warm, clear at small sizes. Both families are free under the SIL Open Font License, which covers web, print, PDF and slides.
+**Why Schibsted Grotesk.** Made for a Scandinavian newspaper group: editorial, slightly warm, clear at small sizes. Both families are free under the SIL Open Font License, which covers web, print, PDF and slides. The site self-hosts Latin subsets from `/fonts` with metric-matched Georgia and Arial fallbacks, so it makes no request to Google and does not shift when the fonts load.
 
 | Token | Size | Use |
 |---|---|---|

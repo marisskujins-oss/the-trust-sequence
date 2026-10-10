@@ -7,3 +7,4 @@ exclude:
   - design/specimen.html
   - design/templates
   - design/email-template.html
+  - design/screenshots
