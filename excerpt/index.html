@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-offer="chapters">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Three Doors: An Excerpt from The Trust Sequence</title>
 <meta name="description" content="Every productive conversation moves through three phases in order: Safety, Context, Decision. Skip one and it breaks. An excerpt from The Trust Sequence by Maris Skujins.">
 <meta property="og:title" content="The Three Doors: An Excerpt from The Trust Sequence">
-<meta property="og:description" content="Most stalled deals are not price or product problems. They're sequence problems. Someone skipped a door.">
+<meta property="og:description" content="Most stalled decisions are not price or product problems. They're sequence problems. Someone skipped a door.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://thetrustsequence.com/excerpt/">
 <meta property="og:image" content="https://thetrustsequence.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://thetrustsequence.com/og-image.png">
 <link rel="canonical" href="https://thetrustsequence.com/excerpt/">
+<link rel="stylesheet" href="/signup.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
@@ -109,13 +110,18 @@
   .seq-arrow { color: var(--ink-ghost); font-size: 1rem; }
 
   /* Author note */
+  .reader-note { margin: 0 0 2.5rem; padding: 1.5rem 1.75rem; background: var(--teal-pale, #e8f3f3); border-left: 3px solid var(--teal); border-radius: 0 var(--radius) var(--radius) 0; }
+  .prose-inner .reader-note .reader-note-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem !important; }
+  .prose-inner .reader-note p { font-size: 15px; color: var(--ink); margin-bottom: 0; }
+  .reader-invite { margin-top: 2.5rem; font-size: 15px; }
+  .reader-invite a { color: var(--teal); font-weight: 500; }
   .author-note { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--paper-warm); display: flex; align-items: flex-start; gap: 1rem; }
   .author-note-content p { font-size: 13px; color: var(--ink-muted); line-height: 1.7; }
   .author-note-content strong { color: var(--ink-soft); }
 
   /* CTA */
   .cta-section { background: #0f0e0c; color: var(--paper); text-align: center; padding: 5rem 1.5rem; }
-  .cta-inner { max-width: 480px; margin: 0 auto; }
+  .cta-inner { max-width: 520px; margin: 0 auto; }
   .cta-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal-soft); margin-bottom: 0.75rem; }
   .cta-title { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 400; color: var(--paper); margin-bottom: 1rem; line-height: 1.15; }
   .cta-desc { font-size: 14px; color: rgba(247,244,238,0.5); margin-bottom: 2rem; line-height: 1.8; }
@@ -144,7 +150,7 @@
   <a href="/" class="nav-logo">The Trust Sequence</a>
   <div class="nav-links">
     <a href="/about/">About the Author</a>
-    <a href="/#early-access" class="nav-cta">Get Early Access</a>
+    <a href="#early-access" class="nav-cta">Get Early Access</a>
   </div>
 </nav>
 
@@ -164,6 +170,12 @@
 
 <section class="prose-section">
   <div class="prose-inner">
+
+    <!-- DRAFT for Maris to approve: framing paragraph for the reader in the other chair. -->
+    <div class="reader-note">
+      <p class="reader-note-label">If you're the one deciding</p>
+      <p>This chapter is written to the person doing the selling. Read it anyway, because every door the seller should open is one you can check for. Did the room feel safe enough for you to say "I don't understand"? Did they understand your problem before they proposed a solution to it? Did you walk out with a next step that someone owns, or just a good feeling? If one of those answers is no, you're not looking at a bad offer. You're looking at a door someone skipped.</p>
+    </div>
 
     <p>The call started badly before anyone said anything important.</p>
 
@@ -237,21 +249,39 @@
 
     <p>That's useful information too.</p>
 
+    <p class="reader-invite">If you read that from the deciding side, the rest of the book is written for your chair too. <a href="#early-access">Join the list</a> and you'll get the chapters as they're written.</p>
+
     <div class="author-note">
       <div class="author-note-content">
-        <p><strong>Maris Skujins</strong> is the author of The Trust Sequence. This is an excerpt from Chapter 2. The book covers 13 frameworks for the specific moments where conversations are won or lost, built from 600+ recorded conversations and 350+ deals across 20+ countries.</p>
+        <p><strong>Maris Skujins</strong> is the author of The Trust Sequence. This is an excerpt from Chapter 2. The book covers 13 frameworks for the moments where a decision moves forward or quietly dies, built from 600+ recorded conversations and 350+ deals across 20+ countries.</p>
       </div>
     </div>
 
   </div>
 </section>
 
-<section class="cta-section">
+<section class="cta-section" id="early-access">
   <div class="cta-inner">
-    <p class="cta-eyebrow">Free Early Access</p>
+    <p class="cta-eyebrow">Free for subscribers</p>
     <h2 class="cta-title">Twelve more frameworks in the book.</h2>
-    <p class="cta-desc">Drop your email and you'll be first to get the full book when it's ready.</p>
-    <a href="/#early-access" class="cta-btn">Notify Me</a>
+    <p class="cta-desc offer-chapters">Join the list and you'll get the chapters as they're written, before anyone else, and the full book when it's done.</p>
+    <p class="cta-desc offer-report">Join the list for <em>What 600+ recorded conversations taught me</em>, free in your first email. The chapters follow as they're written.</p>
+    <div class="signup-card">
+      <form class="email-form" data-signup novalidate>
+        <div class="email-inputs">
+          <input type="text" name="name" placeholder="First name" aria-label="First name" autocomplete="given-name">
+          <input type="email" name="email" placeholder="Email" aria-label="Email address" autocomplete="email" required>
+        </div>
+        <button type="submit"><span class="offer-chapters">Send me the chapters</span><span class="offer-report">Send me the report</span></button>
+        <p class="form-error" role="alert" hidden></p>
+      </form>
+      <p class="email-note">No spam. No funnels. Unsubscribe any time. <a href="/privacy/">How your email is handled</a>.</p>
+    </div>
+    <div class="email-success" role="status">
+      <h3>You're in</h3>
+      <p class="offer-chapters">Check your inbox. The first email is on its way, and the chapters follow as they're written.</p>
+      <p class="offer-report">Check your inbox. The report is in the first email.</p>
+    </div>
   </div>
 </section>
 
@@ -265,5 +295,6 @@
   <p class="footer-copy">&copy; Maris Skujins. All rights reserved. &middot; <a href="/privacy/">Privacy</a></p>
 </footer>
 
+<script src="/signup.js"></script>
 </body>
 </html>
