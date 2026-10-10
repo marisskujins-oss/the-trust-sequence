@@ -1,0 +1,60 @@
+<!doctype html><html lang="en" data-variant="b" data-ground="paper"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../tokens.css">
+<title>Book cover 600x900, rendered at 1800x2700</title>
+<!--
+  The mock cover, until the real one arrives in 2027. Everything made from it (the site's cover images,
+  the OG image, the LinkedIn post) is rendered from this file by render.sh, so a change here is a change everywhere.
+
+  The rule: one colour, one object, the serif title, legible at 80 px wide.
+  Variant b adds the door: The Three Doors, framework 01, as three straight lines. It is the cover, chosen 10 October 2026.
+  Variant a is type only, kept as the fallback.
+  The site uses the variant and ground set on <html> above. ?variant=b and ?ground=ink override them for one render.
+  Colours and fonts come from ../tokens.css. Sizes are for a 600 by 900 canvas; render.sh renders it at 3x for 1800 by 2700.
+-->
+<style>
+:root {
+  --cover-w: 600px;
+  --cover-h: 900px;
+  --cover-pad-x: 48px;
+  --cover-pad-top: 56px;
+  --cover-pad-bottom: 48px;
+  --cover-title: 126px;
+  --cover-subtitle: 15px;
+  --cover-author: 24px;
+  --cover-line: 5px;
+  /* The author's baseline, measured from the foot of the canvas: the door stands on it. */
+  --cover-floor: 54px;
+}
+html { --ground: var(--color-paper); --type: var(--color-ink); --rule: var(--color-accent); }
+/* Inverted, for dark settings. The accent stays off a dark ground, so the rule turns paper. */
+html[data-ground="ink"] { --ground: var(--color-ink); --type: var(--color-paper); --rule: var(--color-paper); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--ground); color: var(--type); }
+body { font-family: var(--font-text); -webkit-font-smoothing: antialiased; overflow: hidden; }
+
+.cover { position: relative; width: var(--cover-w); height: var(--cover-h); padding: var(--cover-pad-top) var(--cover-pad-x) var(--cover-pad-bottom); display: grid; grid-template-rows: auto auto auto 1fr auto; }
+.rule { border: 0; border-top: var(--accent-rule-height) solid var(--rule); width: var(--accent-rule-width); margin-bottom: var(--space-6); }
+.title { font-family: var(--font-display); font-weight: var(--weight-display); font-size: var(--cover-title); line-height: 0.98; letter-spacing: -0.02em; }
+.subtitle { margin-top: var(--space-6); font-size: var(--cover-subtitle); font-weight: var(--weight-strong); letter-spacing: 0.16em; text-transform: uppercase; line-height: var(--leading-tight); }
+.author { grid-row: 5; font-size: var(--cover-author); font-weight: var(--weight-strong); line-height: var(--leading-tight); }
+
+/* Variant b: a door, slightly open, as three straight lines. */
+.door { display: none; position: absolute; right: var(--cover-pad-x); bottom: var(--cover-floor); overflow: visible; }
+html[data-variant="b"] .door { display: block; }
+.door path { fill: none; stroke: currentColor; stroke-width: var(--cover-line); stroke-linecap: butt; stroke-linejoin: miter; }
+</style>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search), root = document.documentElement;
+  ['variant', 'ground'].forEach(function (key) { if (params.has(key)) root.dataset[key] = params.get(key); });
+})();
+</script>
+</head><body>
+<div class="cover">
+  <hr class="rule">
+  <h1 class="title">The Trust<br>Sequence</h1>
+  <p class="subtitle">Walk Out With a Yes</p>
+  <svg class="door" width="150" height="400" viewBox="0 0 150 400" aria-hidden="true"><path d="M2.5 400V2.5L147.5 37.5V400"/></svg>
+  <p class="author">Maris Skujins</p>
+</div>
+</body></html>
