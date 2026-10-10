@@ -1,0 +1,113 @@
+/*
+  The Trust Sequence design tokens. Warm paper, Monocle.
+  The single source of every colour, size, font and spacing value on the site.
+  Fonts are self-hosted in /fonts and declared here; pages preload the two used above the fold.
+*/
+
+/* Self-hosted web fonts (SIL Open Font License, see /fonts). Latin subset. */
+@font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 600; font-display: swap; src: url('../fonts/source-serif-4-600-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Schibsted Grotesk'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../fonts/schibsted-grotesk-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Schibsted Grotesk'; font-style: italic; font-weight: 400; font-display: swap; src: url('../fonts/schibsted-grotesk-italic-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* Metric-matched fallbacks: local fonts scaled to the web fonts' size, so nothing shifts when they load. */
+@font-face { font-family: 'Source Serif 4 Fallback'; src: local('Georgia'); font-weight: 100 900; size-adjust: 103.35%; ascent-override: 100.24%; descent-override: 32.41%; line-gap-override: 0%; }
+@font-face { font-family: 'Schibsted Grotesk Fallback'; src: local('Arial'), local('Helvetica'); font-weight: 100 900; size-adjust: 105.14%; ascent-override: 92.88%; descent-override: 24.52%; line-gap-override: 0%; }
+
+:root {
+  /* Colour */
+  --color-paper: #F3EEE4;
+  --color-paper-alt: #E8E1D3;
+  --color-ink: #1B1A17;
+  --color-ink-soft: #45423B;
+  --color-ink-muted: #625E55;
+  --color-rule: #CFC6B6;
+  --color-field-border: #7A7468;
+  --color-error: #A2381F;
+  --color-focus: #1B1A17;
+
+  /* The one accent: primary button and one rule per page */
+  --color-accent: #F2C230;
+  --color-on-accent: #1B1A17;
+  --color-accent-border: #1B1A17;
+
+  /* Type */
+  --font-fallback-serif: Georgia, 'Times New Roman', serif;
+  --font-fallback-sans: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-display: 'Source Serif 4', 'Source Serif 4 Fallback', var(--font-fallback-serif);
+  --font-text: 'Schibsted Grotesk', 'Schibsted Grotesk Fallback', var(--font-fallback-sans);
+  --weight-display: 600;
+  --weight-text: 400;
+  --weight-strong: 500;
+
+  --size-label: 11px;
+  --size-small: 14px;
+  --size-body: 17px;
+  --size-lead: 20px;
+  --size-h3: 22px;
+  --size-h2: clamp(28px, 3.2vw, 36px);
+  --size-h1: clamp(36px, 5vw, 56px);
+  --size-display: clamp(48px, 7vw, 88px);
+  --size-wordmark: 20px;
+
+  --leading-body: 1.6;
+  --leading-tight: 1.2;
+  --leading-display: 1.02;
+  --tracking-label: 0.14em;
+  --tracking-display: -0.015em;
+  --tracking-button: 0.02em;
+
+  --measure: 66ch;
+  --measure-narrow: 44ch;
+
+  /* Space, on a 4 px base */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-section: var(--space-10);
+
+  /* Grid */
+  --grid-columns: 4;
+  --grid-gutter: 24px;
+  --grid-margin: 24px;
+  --grid-max: 1240px;
+  --nav-height: 64px;
+
+  /* Lines, shapes, media */
+  --rule-width: 1px;
+  --accent-rule-width: 64px;
+  --accent-rule-height: 4px;
+  --radius: 2px;
+  --focus-width: 2px;
+  --focus-offset: 3px;
+  --form-max: 480px;
+  --pin-size: 20px;
+
+  --ratio-landscape: 3 / 2;
+  --ratio-wide: 16 / 9;
+  --ratio-portrait: 4 / 5;
+
+  --duration: 150ms;
+}
+
+@media (min-width: 600px) {
+  :root { --grid-columns: 8; --grid-margin: 40px; }
+}
+@media (min-width: 960px) {
+  :root { --grid-columns: 12; }
+}
+@media (min-width: 1280px) {
+  :root { --grid-margin: 64px; }
+}
+@media (max-width: 599px) {
+  :root { --space-section: var(--space-8); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --duration: 0ms; }
+}

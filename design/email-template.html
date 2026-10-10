@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+<title>The Trust Sequence</title>
+<!--
+  The Trust Sequence email layout for MailerLite. Apply by pasting into a custom HTML email.
+  Values copied from design/tokens.css (email clients do not support CSS variables):
+    paper #F3EEE4, ink #1B1A17, ink soft #45423B, ink muted #625E55, rule #CFC6B6,
+    accent #F2C230 with ink label and 1 px ink border.
+  Fonts: Source Serif 4 and Schibsted Grotesk where the client loads web fonts (Apple Mail, iOS),
+  Georgia and the system sans everywhere else.
+  Merge tags follow MailerLite's syntax: {$name|default('there')} and {$unsubscribe}. Check with a test send.
+  Replace everything between the CONTENT markers for each email.
+-->
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; padding: 0; background: #F3EEE4; -webkit-text-size-adjust: 100%; }
+  table { border-collapse: collapse; }
+  a { color: #1B1A17; }
+  .serif { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; }
+  .sans { font-family: 'Schibsted Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; }
+  @media (max-width: 620px) {
+    .shell { width: 100% !important; }
+    .pad { padding-left: 24px !important; padding-right: 24px !important; }
+    .h1 { font-size: 30px !important; line-height: 36px !important; }
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background:#F3EEE4;">
+<div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">What you signed up for, and what to expect.</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F3EEE4;">
+  <tr>
+    <td align="center" style="padding:32px 0;">
+      <table role="presentation" class="shell" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+
+        <!-- Masthead -->
+        <tr>
+          <td class="pad" style="padding:0 40px 16px 40px; border-bottom:1px solid #1B1A17;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td class="serif" style="font-family:'Source Serif 4', Georgia, 'Times New Roman', serif; font-size:20px; line-height:24px; font-weight:600; color:#1B1A17;">The Trust Sequence</td>
+                <td align="right" class="sans" style="font-family:'Schibsted Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; font-size:11px; line-height:16px; letter-spacing:1.5px; text-transform:uppercase; color:#625E55;">A book in development</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- CONTENT START -->
+        <tr>
+          <td class="pad" style="padding:40px 40px 0 40px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td style="width:64px; height:4px; background:#F2C230; font-size:0; line-height:0;">&nbsp;</td></tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td class="pad sans" style="padding:16px 40px 0 40px; font-family:'Schibsted Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; font-size:11px; line-height:16px; letter-spacing:1.5px; text-transform:uppercase; font-weight:500; color:#1B1A17;">Welcome</td>
+        </tr>
+        <tr>
+          <td class="pad serif h1" style="padding:12px 40px 0 40px; font-family:'Source Serif 4', Georgia, 'Times New Roman', serif; font-size:36px; line-height:42px; font-weight:600; color:#1B1A17;">You're in. Here's what happens next.</td>
+        </tr>
+        <tr>
+          <td class="pad sans" style="padding:24px 40px 0 40px; font-family:'Schibsted Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; font-size:17px; line-height:27px; color:#45423B;">
+            <p style="margin:0 0 16px 0;">Hi {$name|default('there')},</p>
+            <p style="margin:0 0 16px 0;">Thanks for joining. Here's exactly what you signed up for, because I'd rather you know what to expect than be surprised.</p>
+            <p style="margin:0 0 16px 0;">The Trust Sequence is a book about the order in which trust gets earned before a yes. I'm writing it from 600+ recorded conversations, calls where one person needed a yes and another had to decide whether to give it. Most books on this are written for one of those two people. This one is written for both.</p>
+            <p style="margin:0;">The book is still in development. As chapters are ready, you'll get them here first, before anyone else, and the full book when it's done. You can read the first one now.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="pad" style="padding:28px 40px 0 40px;">
+            <!-- Button: accent ground, ink label, ink border -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="background:#F2C230; border:1px solid #1B1A17; border-radius:2px;">
+                  <a href="https://thetrustsequence.com/excerpt/" class="sans" style="display:inline-block; padding:16px 24px; font-family:'Schibsted Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; font-size:14px; line-height:14px; font-weight:500; letter-spacing:0.3px; color:#1B1A17; text-decoration:none;">Read The Three Doors</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="pad sans" style="padding:28px 40px 0 40px; font-family:'Schibsted Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; font-size:17px; line-height:27px; color:#45423B;">
+            <p style="margin:0 0 16px 0;">If you're the one who usually has to decide, read it with one question in mind. In the last big decision you made, which door got skipped?</p>
+            <p style="margin:0 0 16px 0;">One more thing. I sell for a living. If anything I send you reads like a pitch, reply and tell me. That's the fastest way to make the book better.</p>
+            <p style="margin:0; color:#1B1A17;">Maris</p>
+          </td>
+        </tr>
+        <!-- CONTENT END -->
+
+        <!-- Footer -->
+        <tr>
+          <td class="pad" style="padding:48px 40px 0 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td class="sans" style="padding-top:16px; border-top:1px solid #1B1A17; font-family:'Schibsted Grotesk', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; font-size:13px; line-height:20px; color:#625E55;">
+                  You're getting this because you joined the list at <a href="https://thetrustsequence.com" style="color:#625E55;">thetrustsequence.com</a>.<br>
+                  <a href="{$unsubscribe}" style="color:#625E55;">Unsubscribe</a> &middot; <a href="https://thetrustsequence.com/privacy/" style="color:#625E55;">Privacy</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

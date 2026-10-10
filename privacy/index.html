@@ -7,91 +7,56 @@
 <meta name="description" content="Privacy policy for thetrustsequence.com and the associated LinkedIn integration used by Maris Skujins.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://thetrustsequence.com/privacy/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink: #1a1814;
-    --ink-soft: #4a4740;
-    --ink-muted: #8a877e;
-    --paper: #f7f4ee;
-    --paper-warm: #ede9df;
-    --accent: #b85c2a;
-    --accent-pale: #f5ede4;
-    --teal: #2a6b6b;
-    --teal-deep: #235858;
-    --serif: 'DM Serif Display', Georgia, serif;
-    --sans: 'DM Sans', system-ui, sans-serif;
-    --radius: 8px;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--sans); background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-
-  .site-nav { position: sticky; top: 0; z-index: 100; background: rgba(247,244,238,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--paper-warm); padding: 0 1.5rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
-  .nav-logo { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); text-decoration: none; }
-  .nav-links { display: flex; gap: 1.5rem; align-items: center; }
-  .nav-links a { font-size: 13px; color: var(--ink-soft); text-decoration: none; transition: color 0.15s; }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-links .nav-cta { background: var(--accent); color: var(--paper); padding: 0.45rem 1rem; border-radius: var(--radius); font-weight: 500; }
-  .nav-links .nav-cta:hover { background: #a04e22; color: var(--paper); }
-
-  .page-hero { background: var(--ink); color: var(--paper); padding: 5rem 1.5rem 4rem; }
-  .page-hero-inner { max-width: 720px; margin: 0 auto; }
-  .page-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-  .page-title { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; line-height: 1.1; margin-bottom: 0.75rem; }
-  .page-subtitle { font-size: 14px; color: rgba(247,244,238,0.55); font-weight: 300; }
-
-  .section { padding: 4rem 1.5rem; }
-  .section-inner { max-width: 720px; margin: 0 auto; }
-
-  .policy h2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; color: var(--ink); margin-top: 2.5rem; margin-bottom: 0.85rem; line-height: 1.2; }
-  .policy h2:first-child { margin-top: 0; }
-  .policy h3 { font-size: 14px; font-weight: 600; color: var(--ink); margin-top: 1.5rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; }
-  .policy p { font-size: 15px; color: var(--ink-soft); line-height: 1.85; margin-bottom: 1rem; }
-  .policy ul { margin: 0.5rem 0 1.25rem 1.25rem; }
-  .policy li { font-size: 15px; color: var(--ink-soft); line-height: 1.8; margin-bottom: 0.4rem; }
-  .policy a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(42,107,107,0.3); }
-  .policy a:hover { color: var(--teal-deep); border-color: var(--teal-deep); }
-  .policy strong { color: var(--ink); font-weight: 500; }
-  .policy .updated { font-size: 13px; color: var(--ink-muted); margin-bottom: 2rem; font-style: italic; }
-
-  footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem 1.5rem; text-align: center; }
-  .footer-logo { font-family: var(--serif); font-size: 1rem; color: rgba(247,244,238,0.4); margin-bottom: 0.5rem; }
-  .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-  .footer-links a { font-size: 12px; color: rgba(247,244,238,0.3); text-decoration: none; transition: color 0.15s; }
-  .footer-links a:hover { color: var(--accent); }
-  .footer-copy { font-size: 11px; color: rgba(247,244,238,0.2); }
-
-  @media (min-width: 640px) {
-    .page-hero { padding: 6rem 2rem 5rem; }
-    .section { padding: 5rem 2rem; }
-  }
-</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/source-serif-4-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/design/tokens.css">
+<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/signup.css">
 </head>
 <body>
-
-<nav class="site-nav">
-  <a href="/" class="nav-logo">The Trust Sequence</a>
-  <div class="nav-links">
-    <a href="/about/">About</a>
-    <a href="/excerpt/">Read an Excerpt</a>
-    <a href="/#early-access" class="nav-cta">Get Early Access</a>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-nav">
+  <div class="container">
+    <a href="/" class="wordmark">The Trust Sequence</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/excerpt/">Read an Excerpt</a>
+      <a href="/about/">About</a>
+      <a href="/#early-access" class="nav-signup">Get Early Access</a>
+    </nav>
+    <button type="button" class="nav-menu" aria-expanded="false" aria-controls="nav-panel">Menu</button>
   </div>
-</nav>
-
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <p class="page-eyebrow">Legal</p>
-    <h1 class="page-title">Privacy Policy</h1>
-    <p class="page-subtitle">How thetrustsequence.com and its associated LinkedIn integration handle your data.</p>
+  <div class="nav-panel" id="nav-panel" hidden>
+    <div class="container">
+      <ul>
+        <li><a href="/excerpt/">Read an Excerpt</a></li>
+        <li><a href="/about/">About the Author</a></li>
+        <li><a href="/#early-access">Get Early Access</a></li>
+      </ul>
+    </div>
   </div>
-</section>
+</header>
 
-<section class="section policy">
-  <div class="section-inner">
-    <p class="updated">Last updated: 10 October 2026</p>
+<main id="main">
+<header class="page-head">
+  <div class="container">
+    <div class="grid">
+      <div class="col-prose stack">
+        <div class="eyebrow stack-tight"><hr class="rule-accent"><p class="label">Legal</p></div>
+        <h1 class="display" id="page-title">Privacy Policy</h1>
+        <p class="lead">How thetrustsequence.com and its associated LinkedIn integration handle your data.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section" aria-label="Policy">
+  <div class="container">
+    <div class="grid">
+      <div class="col-prose prose">
+    <p class="small">Last updated: 10 October 2026</p>
 
     <h2>Who this covers and who is responsible</h2>
     <p>This policy applies to <strong>thetrustsequence.com</strong> and to the LinkedIn integration application registered under the same name. The data controller for both is <strong>Maris Skujins</strong>, an individual based in Latvia. Contact: <a href="mailto:maris.skujins@gmail.com">maris.skujins@gmail.com</a>.</p>
@@ -106,7 +71,7 @@
       <li><strong>Your email address</strong> (required, used to send you what you signed up for and to contact you about the book)</li>
       <li><strong>The date and time</strong> your submission was received</li>
     </ul>
-    <p>The form itself does not collect your IP address, browser fingerprint, location, or any tracking identifier. The site itself sets no first-party cookies, runs no analytics scripts, embeds no advertising trackers, and uses no fingerprinting or social-media pixels.</p>
+    <p>The form itself does not collect your IP address, browser fingerprint, location, or any tracking identifier. The site itself sets no first-party cookies, runs no analytics scripts, loads its fonts from its own server rather than a third party, embeds no advertising trackers, and uses no fingerprinting or social-media pixels.</p>
 
     <h3>From the LinkedIn integration</h3>
     <p>The LinkedIn integration authenticates as Maris Skujins through LinkedIn's standard OAuth 2.0 flow. It stores:</p>
@@ -136,7 +101,6 @@
     <ul>
       <li><strong>UAB MailerLite</strong> (Lithuania): stores the email list and sends the emails, including the welcome sequence and any file delivered with it. MailerLite records whether each email was opened and which links were clicked; we use this only to check that emails arrive and are read. MailerLite processes data under its own privacy policy and data processing terms.</li>
       <li><strong>Our own subscribe server</strong> (poster.thetrustsequence.com, hosted in the EU and controlled by Maris Skujins): when you submit the form, your name and email pass through this server, which forwards them to MailerLite so that no MailerLite credentials are exposed in the page. The server does not store the submission or record your email address.</li>
-      <li><strong>Google LLC</strong> (Google Fonts): the site loads its typefaces from Google's font service, so your browser sends Google a request, including your IP address, when a page loads. Google processes this under its own privacy policy and may use servers in the United States, covered by the EU-US Data Privacy Framework.</li>
       <li><strong>GitHub, Inc.</strong> (a subsidiary of Microsoft): hosts the static website via GitHub Pages. GitHub may collect aggregate request logs (including visitor IP addresses) for security and abuse-prevention purposes, governed by GitHub's own privacy policy. We do not access these logs.</li>
       <li><strong>LinkedIn Ireland Unlimited Company</strong>: the destination platform for posts created by the integration. The integration interacts with LinkedIn's API; LinkedIn processes the resulting content under its own terms and privacy policy.</li>
       <li><strong>The hosting provider for the integration and subscribe server</strong>: a server located in the EU, controlled by Maris Skujins. OAuth tokens, queued posts and the post log are stored here, on storage that is not world-readable. Apart from the public subscribe endpoint, the server is reachable only through authenticated API endpoints.</li>
@@ -181,18 +145,31 @@
     <h2>Contact</h2>
     <p>Questions about this policy, or about data held about you: <a href="mailto:maris.skujins@gmail.com">maris.skujins@gmail.com</a>.</p>
   </div>
-</section>
-
-<footer>
-  <div class="footer-logo">The Trust Sequence</div>
-  <div class="footer-links">
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/excerpt/">Read an Excerpt</a>
-    <a href="https://www.linkedin.com/in/maris-skujins/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
   </div>
-  <p class="footer-copy">&copy; Maris Skujins. All rights reserved.</p>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="grid">
+      <div class="footer-brand stack-tight">
+        <a href="/" class="wordmark">The Trust Sequence</a>
+        <p class="small">&copy; Maris Skujins. All rights reserved.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/">About the Author</a></li>
+          <li><a href="/excerpt/">Read an Excerpt</a></li>
+          <li><a href="https://www.linkedin.com/in/maris-skujins/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </footer>
 
+<script src="/site.js" defer></script>
 </body>
 </html>

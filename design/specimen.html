@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" data-offer="chapters">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Design specimen | The Trust Sequence</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Schibsted+Grotesk:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="../signup.css">
+<style>
+  /* Specimen-only presentation. Components come from site.css and signup.css. */
+  .toolbar { position: sticky; top: 0; z-index: 60; background: var(--color-paper); border-bottom: var(--rule-width) solid var(--color-ink); }
+  .toolbar .container { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); padding-block: var(--space-3); font-size: var(--size-small); }
+  .toolbar strong { font-weight: var(--weight-strong); margin-right: auto; }
+  .toolbar label { display: inline-flex; align-items: center; gap: var(--space-2); cursor: pointer; }
+  .frame { border: var(--rule-width) solid var(--color-ink); }
+  .frame .site-nav { position: static; }
+  .swatches { display: grid; gap: var(--grid-gutter); grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  .swatch { border-top: var(--rule-width) solid var(--color-ink); padding-top: var(--space-3); display: grid; gap: var(--space-1); font-size: var(--size-small); }
+  .swatch .chip { height: var(--space-9); border: var(--rule-width) solid var(--color-rule); margin-bottom: var(--space-2); }
+  code { font-family: ui-monospace, Menlo, monospace; font-size: var(--size-label); color: var(--color-ink-muted); }
+  .scale-row { display: grid; gap: var(--space-2); padding-block: var(--space-5); border-top: var(--rule-width) solid var(--color-rule); }
+  @media (min-width: 960px) { .scale-row { grid-template-columns: 3fr 9fr; column-gap: var(--grid-gutter); align-items: baseline; } }
+  .weight-row { display: grid; gap: var(--space-2); padding-block: var(--space-4); border-top: var(--rule-width) solid var(--color-rule); }
+  .weight-row .sample { font-size: var(--size-h1); line-height: var(--leading-tight); color: var(--color-ink); }
+  .space-row { display: grid; grid-template-columns: 7rem 4rem 1fr; align-items: center; gap: var(--space-4); padding-block: var(--space-2); font-size: var(--size-small); }
+  .space-bar { height: var(--space-3); background: var(--color-ink); }
+  .demo-grid .col { grid-column: auto; background: var(--color-paper-alt); height: var(--space-10); display: flex; align-items: flex-end; padding: var(--space-2); font-size: var(--size-label); color: var(--color-ink-muted); }
+  .demo-row { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; }
+  .states { display: grid; gap: var(--space-5); }
+  @media (min-width: 960px) { .states { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .is-hover { background: var(--color-ink) !important; color: var(--color-paper) !important; border-color: var(--color-ink) !important; }
+  .is-focus { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
+  .forbid { list-style: none; max-width: var(--measure); }
+  .forbid li { padding-block: var(--space-3); border-top: var(--rule-width) solid var(--color-rule); }
+  .forbid li::before { content: "No: "; font-weight: var(--weight-strong); }
+  .wordmark-demo { display: grid; gap: var(--space-6); }
+  .clearspace { display: inline-block; padding: var(--space-5); outline: var(--rule-width) dashed var(--color-field-border); background: var(--color-paper-alt); }
+  .clearspace img { height: var(--space-7); width: auto; outline: var(--rule-width) solid var(--color-rule); }
+  .grid-overlay { position: fixed; inset: 0; pointer-events: none; z-index: 55; display: none; }
+  .grid-overlay.on { display: block; }
+  .grid-overlay .container, .grid-overlay .grid { height: 100%; }
+  .grid-overlay .grid { row-gap: 0; }
+  .grid-overlay .grid span { grid-column: auto; background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+</style>
+</head>
+<body>
+
+<div class="grid-overlay" id="overlay" aria-hidden="true"><div class="container"><div class="grid" id="overlay-cols"></div></div></div>
+
+<div class="toolbar">
+  <div class="container">
+    <strong>The Trust Sequence design specimen</strong>
+    <label><input type="checkbox" id="grid-toggle"> Grid overlay</label>
+  </div>
+</div>
+
+<header class="page-head">
+  <div class="container">
+    <div class="grid">
+      <div class="col-text stack">
+        <p class="label label-muted">Design system</p>
+        <h1 class="display">Warm paper. Monocle.</h1>
+        <p class="lead">Cream ground, ink type, one yellow accent. Source Serif 4 at 600 for display, Schibsted Grotesk for everything else. A twelve-column grid with wide margins, 2 px corners, and a lot of air. Every value on this page comes from tokens.css, and every component from the site's own stylesheets.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 01 Hero -->
+<section class="section" aria-labelledby="s1">
+  <div class="container">
+    <div class="grid section-head"><p class="label" id="s1">01 Home page hero</p><h2 class="section-title">The page as it ships.</h2></div>
+    <div class="frame">
+      <header class="site-nav">
+        <div class="container">
+          <a href="#" class="wordmark">The Trust Sequence</a>
+          <nav class="nav-links" aria-label="Specimen nav"><a href="#">Read an Excerpt</a><a href="#">About</a><a href="#" class="nav-signup">Get Early Access</a></nav>
+          <button type="button" class="nav-menu">Menu</button>
+        </div>
+      </header>
+      <section class="hero">
+        <div class="container">
+          <div class="grid">
+            <div class="col-text stack text">
+              <div class="eyebrow"><hr class="rule-accent"><p class="label">The Trust Sequence. A book in development.</p></div>
+              <h2 class="h1">Walk out with a yes you can walk back in on.</h2>
+              <p class="lead">For the founder asking for budget, the project manager who needs a sign-off, and the owner deciding which supplier to trust.</p>
+              <div class="stack-tight">
+                <p class="offer">Free: read the chapters as they are written, before anyone else.</p>
+                <div class="signup-card signup-card--inline">
+                  <form class="email-form" onsubmit="return false">
+                    <div class="email-inputs"><input type="email" placeholder="Your email" aria-label="Email address"><button type="submit">Send me the chapters</button></div>
+                  </form>
+                </div>
+                <p class="small"><a class="link" href="#">Or read a chapter first</a></p>
+              </div>
+              <div class="proof"><span class="proof-num">600+</span><span class="label label-muted">Recorded conversations</span></div>
+            </div>
+            <figure class="col-media photo ratio-landscape">
+              <img src="assets/meet-magento-uk-2026-panel-3x2.jpg" width="1350" height="900" alt="Maris Skujins, second from left, on stage with three other speakers at Meet Magento UK 2026">
+              <figcaption><span>Maris Skujins, second from left, on a panel at Meet Magento UK 2026.</span><span>Photo: Owen Billcliffe</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+      <nav class="contents" aria-label="Specimen contents">
+        <div class="container"><ol>
+          <li><a href="#"><span class="label label-muted">01</span> The book</a></li>
+          <li><a href="#"><span class="label label-muted">02</span> Frameworks</a></li>
+          <li><a href="#"><span class="label label-muted">03</span> The author</a></li>
+          <li><a href="#"><span class="label label-muted">04</span> Read a chapter</a></li>
+        </ol></div>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- 02 Palette -->
+<section class="section" aria-labelledby="s2">
+  <div class="container">
+    <div class="grid section-head"><p class="label" id="s2">02 Palette</p><h2 class="section-title">Paper, ink, and one accent.</h2></div>
+    <div class="swatches" id="swatches"></div>
+    <div class="section-end" style="align-items:center">
+      <button class="btn btn-primary" type="button">Send me the chapters</button>
+      <hr class="rule-accent">
+      <span class="small">The accent appears only on the primary button and one short rule.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 03 Type -->
+<section class="section" aria-labelledby="s3">
+  <div class="container">
+    <div class="grid section-head"><p class="label" id="s3">03 Type</p><h2 class="section-title">Two families, three weights.</h2></div>
+    <div>
+      <div class="scale-row"><code data-measure>label</code><p class="label">A book in development</p></div>
+      <div class="scale-row"><code data-measure>small</code><p class="small">No spam. No funnels. Unsubscribe any time.</p></div>
+      <div class="scale-row"><code data-measure>body</code><p class="body">Think about the last time you had to decide on something that mattered, offered by someone who knew more about it than you did. A builder, an agency, a software partner. You weren't short of information. You were short of a reason to believe it.</p></div>
+      <div class="scale-row"><code data-measure>lead</code><p class="lead">Every decision has moments where it moves forward or quietly dies.</p></div>
+      <div class="scale-row"><code data-measure>h3</code><p class="h3">Ready for the next big yes</p></div>
+      <div class="scale-row"><code data-measure>h2</code><p class="h2">Most decisions don't stall on price. They stall on trust.</p></div>
+      <div class="scale-row"><code data-measure>h1</code><p class="h1">Walk out with a yes you can walk back in on.</p></div>
+      <div class="scale-row"><code data-measure>display</code><p class="display">The Trust Sequence</p></div>
+    </div>
+    <div class="grid section-head" style="margin-top: var(--space-9)"><p class="label">Serif weight</p><h2 class="h3 section-title">Why Source Serif 4 at 600.</h2></div>
+    <div>
+      <div class="weight-row"><p class="small">DM Serif Display 400. The site before. Only one weight exists.</p><p class="sample" style="font-family:'DM Serif Display',serif;font-weight:400">The Trust Sequence</p></div>
+      <div class="weight-row"><p class="small">Source Serif 4 Display 400. The family DM Serif was drawn from.</p><p class="sample" style="font-family:'Source Serif 4',serif;font-weight:400">The Trust Sequence</p></div>
+      <div class="weight-row"><p class="small ink">Source Serif 4 Display 600. One step heavier. The system uses this.</p><p class="sample" style="font-family:'Source Serif 4',serif;font-weight:600">The Trust Sequence</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 Grid -->
+<section class="section" aria-labelledby="s4">
+  <div class="container">
+    <div class="grid section-head"><p class="label" id="s4">04 Grid</p><h2 class="section-title">Twelve columns, collapsing to eight and four.</h2></div>
+    <div class="grid demo-grid" id="demo-grid"></div>
+    <p class="small" style="margin-top: var(--space-4)" id="grid-readout"></p>
+  </div>
+</section>
+
+<!-- 05 Spacing -->
+<section class="section" aria-labelledby="s5">
+  <div class="container">
+    <div class="grid section-head"><p class="label" id="s5">05 Spacing</p><h2 class="section-title">One scale, on a 4 px base.</h2></div>
+    <div id="space"></div>
+  </div>
+</section>
+
+<!-- 06 Components -->
+<section class="section" aria-labelledby="s6">
+  <div class="container">
+    <div class="grid section-head"><p class="label" id="s6">06 Components</p><h2 class="section-title">The parts the site is built from.</h2></div>
+    <div class="stack" style="gap: var(--space-8)">
+      <div class="stack-tight">
+        <p class="label label-muted">Buttons and links</p>
+        <div class="demo-row">
+          <button class="btn btn-primary" type="button">Send me the chapters</button>
+          <button class="btn btn-primary is-hover" type="button">Hover</button>
+          <button class="btn btn-primary is-focus" type="button">Focus</button>
+          <button class="btn btn-primary" type="button" disabled>Sending...</button>
+          <button class="btn btn-secondary" type="button">Get Early Access</button>
+          <a class="link" href="#">Read an excerpt: The Three Doors</a>
+          <a class="link link-arrow" href="#">Read an Excerpt</a>
+        </div>
+      </div>
+
+      <div class="stack-tight">
+        <p class="label label-muted">Signup form and its states</p>
+        <div class="states">
+          <div class="stack-tight"><p class="small">Default</p><div class="signup-card"><form class="email-form" onsubmit="return false"><div class="email-inputs"><input placeholder="First name" aria-label="First name"><input placeholder="Email" aria-label="Email"></div><button type="submit">Send me the chapters</button></form><p class="email-note">No spam. No funnels. Unsubscribe any time. <a href="#">How your email is handled</a>.</p></div></div>
+          <div class="stack-tight"><p class="small">Error</p><div class="signup-card"><form class="email-form" onsubmit="return false"><div class="email-inputs"><input placeholder="First name" aria-label="First name"><input class="invalid" value="maris@" aria-label="Email"></div><button type="submit">Send me the chapters</button><p class="form-error" role="alert">Please enter a valid email address.</p></form></div></div>
+          <div class="stack-tight"><p class="small">Success</p><div class="email-success show" role="status"><h3>You're in</h3><p>Check your inbox. The first email is on its way, and the chapters follow as they're written.</p></div></div>
+        </div>
+      </div>
+
+      <div class="stack-tight">
+        <p class="label label-muted">Framework cards</p>
+        <div class="cards">
+          <article class="card"><p class="card-num">01 Framework</p><h3 class="h3">The Three Doors</h3><p>Safety, then Context, then Decision. Skip one and the conversation breaks. If you're the one deciding, it doubles as a test: never say yes in a room where you couldn't say "I don't understand."</p></article>
+          <article class="card"><p class="card-num">07 Framework</p><h3 class="h3">Cards on the Table</h3><p>A seller you can trust tells you what you don't need and names the risk before you think of it. A buyer who knows this asks what the other side gains. Either way, the cards go face up.</p></article>
+          <article class="card"><p class="card-num">11 Framework</p><h3 class="h3">The Soft Close</h3><p>If you have to push for the signature, the moment has already passed. A good yes is built from small agreements along the way, and a good buyer notices when they're being hurried.</p></article>
+        </div>
+      </div>
+
+      <div class="stack-tight">
+        <p class="label label-muted">Quote</p>
+        <figure class="quote"><blockquote>"Nobody wants to take responsibility for the unknown."</blockquote><figcaption><cite class="label label-muted">Maris Skujins</cite></figcaption></figure>
+      </div>
+
+      <div class="stack-tight">
+        <p class="label label-muted">Proof numbers</p>
+        <div class="proofs">
+          <div class="proof"><span class="proof-num">600+</span><span class="label label-muted">Recorded conversations</span></div>
+          <div class="proof"><span class="proof-num">350+</span><span class="label label-muted">Deals analyzed</span></div>
+          <div class="proof"><span class="proof-num">20+</span><span class="label label-muted">Countries</span></div>
+          <div class="proof"><span class="proof-num">13</span><span class="label label-muted">Named frameworks</span></div>
+        </div>
+      </div>
+
+      <div class="stack-tight">
+        <p class="label label-muted">Rules</p>
+        <div class="stack-tight">
+          <div class="small" style="border-top: var(--rule-width) solid var(--color-ink); padding-top: var(--space-2)">Ink rule, 1 px. Opens every section; frames the nav and footer; tops each framework card.</div>
+          <div class="small" style="border-top: var(--rule-width) solid var(--color-rule); padding-top: var(--space-2)">Hairline, 1 px in the rule colour. Separates items inside a section; sits above captions and proof numbers.</div>
+          <div class="stack-tight"><hr class="rule-accent"><span class="small">Accent rule, 4 by 64 px. Once per page, above the first label.</span></div>
+        </div>
+      </div>
+
+      <div class="stack-tight">
+        <p class="label label-muted">Footer</p>
+        <footer class="site-footer frame">
+          <div class="container"><div class="grid">
+            <div class="footer-brand stack-tight"><a href="#" class="wordmark">The Trust Sequence</a><p class="small">&copy; Maris Skujins. All rights reserved.</p></div>
+            <nav class="footer-nav" aria-label="Specimen footer"><ul class="footer-links"><li><a href="#">Home</a></li><li><a href="#">About the Author</a></li><li><a href="#">Read an Excerpt</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Privacy</a></li></ul></nav>
+          </div></div>
+        </footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 Photographs -->
+<section class="section" aria-labelledby="s7">
+  <div class="container">
+    <div class="grid section-head"><p class="label" id="s7">07 Photographs</p><h2 class="section-title">Inside the grid, with a caption. Never full-bleed.</h2></div>
+    <div class="grid">
+      <figure class="col-text photo ratio-wide">
+        <img src="assets/meet-magento-uk-2026-panel.jpg" width="1600" height="900" loading="lazy" alt="Maris Skujins, second from left, on stage with three other speakers at Meet Magento UK 2026">
+        <figcaption><span>Maris Skujins, second from left, on a panel at Meet Magento UK 2026. 16:9 crop.</span><span>Photo: Owen Billcliffe</span></figcaption>
+      </figure>
+      <ul class="col-media forbid">
+        <li>full-bleed images or images behind text</li>
+        <li>tinting the page to match the photo; its colours stay inside the frame</li>
+        <li>a photo without a caption and a credit</li>
+        <li>crops outside 3:2, 16:9 and 4:5</li>
+        <li>logos or watermarks left in; crop them out</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Wordmark -->
+<section class="section" aria-labelledby="s8">
+  <div class="container">
+    <div class="grid section-head"><p class="label" id="s8">08 Wordmark</p><h2 class="section-title">The title, set in the system serif.</h2></div>
+    <div class="wordmark-demo">
+      <img src="wordmark.svg" alt="The Trust Sequence" style="width: min(100%, 720px); height: auto">
+      <div class="stack-tight">
+        <div><span class="clearspace"><img src="wordmark.svg" alt=""></span></div>
+        <p class="small">Clear space on every side equals the height of the capital T. Never smaller than 20 px tall on screen or 6 mm in print. Ink on paper; paper on ink in print only. Never on the photograph, never in the accent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Forbidden -->
+<section class="section" aria-labelledby="s9">
+  <div class="container">
+    <div class="grid section-head"><p class="label" id="s9">09 Forbidden</p><h2 class="section-title">What makes a page read as generated.</h2></div>
+    <ul class="forbid">
+      <li>dark grounds</li>
+      <li>the accent on a dark ground</li>
+      <li>centred layouts by default; centre only by decision</li>
+      <li>decorative italics</li>
+      <li>gradients</li>
+      <li>drop shadows</li>
+      <li>a second accent, or the accent used for decoration</li>
+      <li>em dashes in any copy</li>
+    </ul>
+  </div>
+</section>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var tokens = [
+    ['--color-paper', 'Paper', 'Page ground'],
+    ['--color-paper-alt', 'Paper alt', 'Panels, grid fills'],
+    ['--color-ink', 'Ink', 'Headlines, body, rules, focus'],
+    ['--color-ink-soft', 'Ink soft', 'Long copy'],
+    ['--color-ink-muted', 'Ink muted', 'Captions, labels'],
+    ['--color-rule', 'Rule', 'Hairlines only, never text'],
+    ['--color-field-border', 'Field border', 'Form fields'],
+    ['--color-accent', 'Accent', 'Primary button and one rule'],
+    ['--color-error', 'Error', 'A failed field and its message']
+  ];
+  function hex(v) { v = v.trim(); return /^#/.test(v) ? v.toUpperCase() : v; }
+  function lum(h) { var c = [1, 3, 5].map(function (i) { var x = parseInt(h.substr(i, 2), 16) / 255; return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4); }); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]; }
+  function ratio(a, b) { var x = lum(a), y = lum(b); return ((Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05)).toFixed(2); }
+
+  function render() {
+    var cs = getComputedStyle(root);
+    var paper = hex(cs.getPropertyValue('--color-paper'));
+    var ink = hex(cs.getPropertyValue('--color-ink'));
+    document.getElementById('swatches').innerHTML = tokens.map(function (t) {
+      var h = hex(cs.getPropertyValue(t[0]));
+      var note = t[0] === '--color-paper' ? 'ground' : t[0] === '--color-accent' ? ratio(h, ink) + ':1 with ink label' : ratio(h, paper) + ':1 on paper';
+      return '<div class="swatch"><div class="chip" style="background:' + h + '"></div><strong>' + t[1] + '</strong><span>' + h + '</span><span class="small">' + t[2] + '</span><code>' + t[0] + '</code><code>' + note + '</code></div>';
+    }).join('');
+
+    document.querySelectorAll('[data-measure]').forEach(function (code) {
+      var s = getComputedStyle(code.nextElementSibling);
+      code.textContent = code.textContent.split(' ')[0] + '  ' + Math.round(parseFloat(s.fontSize)) + 'px / ' + s.fontWeight + ' / ' + s.fontFamily.split(',')[0].replace(/"/g, '');
+    });
+
+    var cols = parseInt(cs.getPropertyValue('--grid-columns'), 10), cells = '';
+    for (var i = 1; i <= cols; i++) cells += '<div class="col">' + i + '</div>';
+    document.getElementById('demo-grid').innerHTML = cells;
+    document.getElementById('overlay-cols').innerHTML = new Array(cols + 1).join('<span></span>');
+    document.getElementById('grid-readout').textContent = cols + ' columns at this width. Gutter ' + cs.getPropertyValue('--grid-gutter').trim() + ', margin ' + cs.getPropertyValue('--grid-margin').trim() + ', max ' + cs.getPropertyValue('--grid-max').trim() + '. Breakpoints: 600 px (8 columns), 960 px (12 columns), 1280 px (wider margins).';
+
+    var rows = '';
+    for (var n = 1; n <= 10; n++) { var px = cs.getPropertyValue('--space-' + n).trim(); rows += '<div class="space-row"><code>--space-' + n + '</code><span>' + px + '</span><span class="space-bar" style="width:' + px + '"></span></div>'; }
+    document.getElementById('space').innerHTML = rows + '<div class="space-row"><code>--space-section</code><span>' + getComputedStyle(document.querySelector('.section')).paddingTop + '</span><span class="small">Between sections</span></div>';
+  }
+
+  document.getElementById('grid-toggle').addEventListener('change', function (e) { document.getElementById('overlay').classList.toggle('on', e.target.checked); });
+  window.addEventListener('resize', render);
+  render();
+  if (document.fonts) document.fonts.ready.then(render);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+/* Shared by the audience templates. Colours, fonts and spacing come from ../tokens.css.
+   Template-only sizes are defined here because cards are fixed-size canvases, not responsive pages. */
+:root {
+  --tpl-pad: var(--space-9);
+  --tpl-display: 112px;
+  --tpl-title: 88px;
+  --tpl-quote: 80px;
+  --tpl-body: 34px;
+  --tpl-label: 22px;
+  --tpl-wordmark-h: 40px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--color-paper); color: var(--color-ink); }
+body { font-family: var(--font-text); -webkit-font-smoothing: antialiased; overflow: hidden; }
+.canvas { position: relative; width: 100vw; height: 100vh; padding: var(--tpl-pad); display: grid; }
+.top, .bottom { display: flex; justify-content: space-between; align-items: center; gap: var(--space-5); }
+.top { padding-bottom: var(--space-5); border-bottom: var(--rule-width) solid var(--color-ink); }
+.bottom { padding-top: var(--space-5); border-top: var(--rule-width) solid var(--color-ink); }
+.wordmark { height: var(--tpl-wordmark-h); width: auto; display: block; }
+.label { font-size: var(--tpl-label); font-weight: var(--weight-strong); letter-spacing: var(--tracking-label); text-transform: uppercase; line-height: var(--leading-tight); }
+.muted { color: var(--color-ink-muted); }
+.rule-accent { border: 0; border-top: calc(var(--accent-rule-height) * 2) solid var(--color-accent); width: calc(var(--accent-rule-width) * 2); }
+.title { font-family: var(--font-display); font-weight: var(--weight-display); font-size: var(--tpl-title); line-height: var(--leading-tight); letter-spacing: var(--tracking-display); text-wrap: balance; }
+.display { font-family: var(--font-display); font-weight: var(--weight-display); font-size: var(--tpl-display); line-height: var(--leading-display); letter-spacing: var(--tracking-display); text-wrap: balance; }
+.body { font-size: var(--tpl-body); line-height: var(--leading-body); color: var(--color-ink-soft); text-wrap: pretty; }
+.stack { display: grid; gap: var(--space-6); align-content: start; }
+.photo img { width: 100%; aspect-ratio: var(--ratio-landscape); object-fit: cover; display: block; }
+.photo figcaption { display: flex; justify-content: space-between; gap: var(--space-4); margin-top: var(--space-3); padding-top: var(--space-3); border-top: var(--rule-width) solid var(--color-rule); font-size: var(--tpl-label); color: var(--color-ink-muted); }
