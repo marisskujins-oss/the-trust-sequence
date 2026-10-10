@@ -20,6 +20,8 @@ a { color: inherit; }
 .section-head { margin-bottom: var(--space-7); row-gap: var(--space-4); }
 .stack { display: grid; gap: var(--space-5); align-content: start; }
 .stack-tight { display: grid; gap: var(--space-3); align-content: start; }
+.col-cover { grid-column: 1 / 3; }
+@media (min-width: 600px) { .col-cover { grid-column: 1 / 4; } }
 @media (min-width: 960px) {
   .section-head .label { grid-column: 1 / 4; padding-top: var(--space-2); }
   .section-head .section-title { grid-column: 4 / 11; }
@@ -28,6 +30,8 @@ a { color: inherit; }
   .col-media { grid-column: 7 / 13; }
   .col-prose { grid-column: 3 / 10; }
   .col-wide { grid-column: 1 / 11; }
+  .hero .col-cover { grid-column: 1 / 6; }
+  .col-beside-cover { grid-column: 7 / 13; }
 }
 
 /* Type */
@@ -83,7 +87,10 @@ a { color: inherit; }
 .hero .eyebrow { display: grid; gap: var(--space-4); }
 .hero .text { gap: var(--space-5); }
 @media (min-width: 600px) { .hero { padding-block: var(--space-8) var(--space-10); } }
-@media (min-width: 960px) { .hero .col-media { margin-top: calc(var(--space-6) + var(--space-5)); } }
+
+/* Book cover. The image is rendered from design/templates/cover.html; the turn and shadow are CSS. */
+.cover-3d { filter: var(--cover-shadow); }
+.cover-3d img { width: 100%; transform: perspective(var(--cover-perspective)) rotateY(var(--cover-turn)); transform-origin: left center; }
 
 /* Photograph */
 .photo img { width: 100%; object-fit: cover; }
