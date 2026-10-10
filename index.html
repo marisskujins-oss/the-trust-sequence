@@ -17,116 +17,6 @@
 <meta name="twitter:description" content="How trust gets earned before a yes, from both sides of the table. Built from 600+ recorded conversations, not theory.">
 <meta name="twitter:image" content="https://thetrustsequence.com/og-image.png">
 <link rel="canonical" href="https://thetrustsequence.com/">
-<link rel="stylesheet" href="/signup.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink: #1a1814;
-    --ink-soft: #4a4740;
-    --ink-muted: #8a877e;
-    --ink-ghost: #c5c2b8;
-    --paper: #f7f4ee;
-    --paper-warm: #ede9df;
-    --paper-card: #faf8f3;
-    --accent: #b85c2a;
-    --accent-soft: #e8d5c4;
-    --accent-pale: #f5ede4;
-    --teal: #2a6b6b;
-    --teal-deep: #235858;
-    --teal-soft: #c4dede;
-    --teal-pale: #e8f3f3;
-    --serif: 'DM Serif Display', Georgia, serif;
-    --sans: 'DM Sans', system-ui, sans-serif;
-    --radius: 8px;
-    --radius-lg: 14px;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--sans); background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-  .hero { background: var(--ink); color: var(--paper); min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 3rem 1.5rem; }
-  .hero::before { content: ''; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border: 1px solid rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none; }
-  .hero::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 350px; height: 350px; border: 1px solid rgba(255,255,255,0.03); border-radius: 50%; pointer-events: none; }
-  .hero-inner { max-width: 680px; text-align: center; position: relative; z-index: 1; }
-  .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s ease 0.2s forwards; }
-  .hero-title { font-family: var(--serif); font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.08; font-weight: 400; margin-bottom: 0.5rem; opacity: 0; animation: fadeUp 0.6s ease 0.35s forwards; }
-  .hero-title em { font-style: italic; color: var(--accent-soft); }
-  .hero-subtitle-line { font-family: var(--serif); font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 400; font-style: italic; color: rgba(247,244,238,0.5); margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.6s ease 0.45s forwards; }
-  .hero-desc { font-size: 15px; color: rgba(247,244,238,0.6); font-weight: 300; max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.8; opacity: 0; animation: fadeUp 0.6s ease 0.55s forwards; }
-  .hero-cta { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: var(--teal); color: var(--paper); border: none; border-radius: var(--radius); padding: 0.85rem 2rem; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; opacity: 0; animation: fadeUp 0.6s ease 0.65s forwards; }
-  .hero-cta:hover { background: var(--teal-deep); transform: translateY(-1px); }
-  .hero-cta svg { width: 14px; height: 14px; }
-  .hero-signup { max-width: 460px; margin: 0 auto; opacity: 0; animation: fadeUp 0.6s ease 0.65s forwards; }
-  .hero-offer { font-size: 13.5px; color: rgba(247,244,238,0.8); line-height: 1.6; margin-bottom: 1rem; }
-  .hero-offer em { font-family: var(--serif); font-size: 1.05em; color: var(--accent-soft); }
-  @media (max-width: 639px) { .hero-scroll { display: none; } }
-  .hero-proof { margin-top: 1rem; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(247,244,238,0.35); }
-  .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); opacity: 0; animation: fadeUp 0.6s ease 1s forwards; }
-  .hero-scroll span { display: block; width: 1px; height: 40px; background: rgba(255,255,255,0.15); margin: 0 auto; position: relative; overflow: hidden; }
-  .hero-scroll span::after { content: ''; display: block; width: 1px; height: 40px; background: var(--accent); animation: scrollLine 2s ease infinite; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes scrollLine { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
-  .section { padding: 5rem 1.5rem; }
-  .section-inner { max-width: 720px; margin: 0 auto; }
-  .section-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
-  .section-title { font-family: var(--serif); font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 400; line-height: 1.15; margin-bottom: 1rem; }
-  .section-desc { font-size: 15px; color: var(--ink-soft); line-height: 1.8; max-width: 560px; }
-  .book-section { border-bottom: 1px solid var(--paper-warm); }
-  .book-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 2.5rem; }
-  .book-point { display: flex; gap: 1rem; align-items: flex-start; }
-  .book-point-icon { flex-shrink: 0; width: 40px; height: 40px; background: var(--accent-pale); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
-  .book-point-icon svg { width: 18px; height: 18px; color: var(--accent); }
-  .book-point h3 { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: 0.25rem; }
-  .book-point p { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
-  .frameworks-section { background: var(--ink); color: var(--paper); }
-  .frameworks-section .section-eyebrow { color: var(--accent); }
-  .frameworks-section .section-desc { color: rgba(247,244,238,0.55); }
-  .frameworks-section .section-inner { max-width: 960px; }
-  .framework-cards { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2.5rem; }
-  .fw-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-lg); padding: 1.75rem 2rem; position: relative; overflow: hidden; transition: border-color 0.2s, background 0.2s; }
-  .fw-card:hover { border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.06); }
-  .fw-card::after { content: attr(data-num); position: absolute; top: -12px; right: 16px; font-family: var(--serif); font-size: 5rem; color: rgba(255,255,255,0.04); line-height: 1; pointer-events: none; }
-  .fw-card-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
-  .fw-card-name { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: 0.6rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .fw-card-desc { font-size: 14px; color: rgba(247,244,238,0.6); line-height: 1.7; }
-  .fw-more { margin-top: 2.5rem; font-size: 15px; color: var(--accent); font-weight: 500; letter-spacing: 0.02em; padding: 0.75rem 1.5rem; border: 1px solid rgba(184,92,42,0.3); border-radius: var(--radius); display: inline-block; }
-  .quote-break { background: var(--accent-pale); padding: 3.5rem 1.5rem; text-align: center; }
-  .quote-break blockquote { font-family: var(--serif); font-size: clamp(1.15rem, 2.5vw, 1.5rem); font-style: italic; color: var(--ink); line-height: 1.5; max-width: 600px; margin: 0 auto; }
-  .quote-break cite { display: block; font-family: var(--sans); font-style: normal; font-size: 12px; color: var(--ink-muted); margin-top: 1rem; letter-spacing: 0.04em; }
-  .about-section { border-bottom: 1px solid var(--paper-warm); }
-  .about-content { margin-top: 2rem; }
-  .about-content p { font-size: 15px; color: var(--ink-soft); line-height: 1.8; margin-bottom: 1rem; }
-  .about-stats { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--paper-warm); }
-  .about-stat { text-align: center; min-width: 100px; }
-  .about-stat-num { font-family: var(--serif); font-size: 1.8rem; color: var(--accent); }
-  .about-stat-label { font-size: 11px; color: var(--ink-muted); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; }
-  .cta-section { background: #0f0e0c; color: var(--paper); text-align: center; position: relative; overflow: hidden; }
-  .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(42,107,107,0.12) 0%, transparent 70%); pointer-events: none; }
-  .cta-section .section-inner { max-width: 560px; position: relative; z-index: 1; }
-  .cta-section .section-eyebrow { color: var(--teal-soft); }
-  .cta-section .section-title { color: var(--paper); font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 1.25rem; }
-  .cta-section .section-desc { color: rgba(247,244,238,0.55); margin: 0 auto 1.75rem; }
-  footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem 1.5rem; text-align: center; }
-  .footer-logo { font-family: var(--serif); font-size: 1rem; color: rgba(247,244,238,0.4); margin-bottom: 0.5rem; }
-  .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
-  .footer-links a { font-size: 12px; color: rgba(247,244,238,0.3); text-decoration: none; transition: color 0.15s; }
-  .footer-links a:hover { color: var(--accent); }
-  .footer-copy { font-size: 11px; color: rgba(247,244,238,0.2); }
-  .footer-copy a { color: inherit; text-decoration: none; transition: color 0.15s; }
-  .footer-copy a:hover { color: rgba(247,244,238,0.45); }
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  @media (min-width: 640px) {
-    .section { padding: 6rem 2rem; }
-    .book-grid { grid-template-columns: 1fr 1fr; }
-    .framework-cards { grid-template-columns: 1fr 1fr 1fr; }
-  }
-  @media (min-width: 900px) {
-    .section { padding: 7rem 2rem; }
-    .hero { padding: 4rem 2rem; }
-  }
-</style>
 <!-- TODO(Maris): author title and employer line in jobTitle/description below. Current: "Chief Growth and Revenue Officer at Scandiweb". Candidates: "CGO", "Head of Digital Commerce Strategy". Same on /about/. -->
 <script type="application/ld+json">
 {
@@ -176,247 +66,246 @@
   ]
 }
 </script>
-<style>
-  .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(26,24,20,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 1.5rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
-  .nav-logo { font-family: var(--serif); font-size: 0.95rem; color: rgba(247,244,238,0.7); text-decoration: none; transition: color 0.15s; }
-  .nav-logo:hover { color: var(--paper); }
-  .nav-right { display: flex; align-items: center; gap: 0.75rem; }
-  .nav-links { display: none; gap: 1.5rem; align-items: center; }
-  .nav-links a { font-size: 13px; color: rgba(247,244,238,0.45); text-decoration: none; transition: color 0.15s; }
-  .nav-links a:hover { color: rgba(247,244,238,0.9); }
-  .nav-cta { background: var(--accent); color: var(--paper) !important; padding: 0.45rem 1rem; border-radius: var(--radius); font-weight: 500; font-size: 13px; text-decoration: none; transition: background 0.2s; }
-  .nav-cta:hover { background: #a04e22; }
-  .nav-burger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 4px; }
-  .nav-burger span { display: block; width: 20px; height: 1.5px; background: rgba(247,244,238,0.6); transition: all 0.25s ease; border-radius: 2px; }
-  .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .nav-burger.open span:nth-child(2) { opacity: 0; }
-  .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-  .nav-mobile-menu { display: none; position: fixed; top: 56px; left: 0; right: 0; background: rgba(20,18,15,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.07); padding: 1rem 1.5rem 1.5rem; z-index: 99; }
-  .nav-mobile-menu.open { display: block; }
-  .nav-mobile-menu a { display: block; font-size: 15px; color: rgba(247,244,238,0.6); text-decoration: none; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.15s; }
-  .nav-mobile-menu a:last-child { border-bottom: none; }
-  .nav-mobile-menu a:hover { color: var(--paper); }
-  .hero { padding-top: calc(3rem + 56px); }
-  @media (min-width: 640px) {
-    .nav-links { display: flex; }
-    .nav-burger { display: none; }
-  }
-</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/design/tokens.css">
+<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/signup.css">
 </head>
 <body>
-
-<nav class="site-nav">
-  <a href="/" class="nav-logo">The Trust Sequence</a>
-  <div class="nav-right">
-    <div class="nav-links">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-nav">
+  <div class="container">
+    <a href="/" class="wordmark">The Trust Sequence</a>
+    <nav class="nav-links" aria-label="Main">
       <a href="/excerpt/">Read an Excerpt</a>
       <a href="/about/">About</a>
+      <a href="#early-access" class="nav-signup">Get Early Access</a>
+    </nav>
+    <button type="button" class="nav-menu" aria-expanded="false" aria-controls="nav-panel">Menu</button>
+  </div>
+  <div class="nav-panel" id="nav-panel" hidden>
+    <div class="container">
+      <ul>
+        <li><a href="/excerpt/">Read an Excerpt</a></li>
+        <li><a href="/about/">About the Author</a></li>
+        <li><a href="#early-access">Get Early Access</a></li>
+      </ul>
     </div>
-    <a href="#early-access" class="nav-cta">Get Early Access</a>
-    <button class="nav-burger" id="nav-burger" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="grid">
+      <div class="col-text stack text">
+        <div class="eyebrow">
+          <hr class="rule-accent">
+          <p class="label">The Trust Sequence. A book in development.</p>
+        </div>
+        <h1 class="h1" id="hero-title">Walk out with a yes you can walk back in on.</h1>
+        <p class="lead">For the founder asking for budget, the project manager who needs a sign-off, and the owner deciding which supplier to trust.</p>
+        <div class="stack-tight" data-hero-form>
+          <p class="offer offer-chapters">Free: read the chapters as they are written, before anyone else.</p>
+          <p class="offer offer-report">Free: <em>What 600+ recorded conversations taught me.</em> The patterns in the ones that closed.</p>
+          <div class="signup-card signup-card--inline">
+            <form class="email-form" data-signup novalidate>
+              <div class="email-inputs">
+                <input type="email" name="email" placeholder="Your email" aria-label="Email address" autocomplete="email" required>
+                <button type="submit"><span class="offer-chapters">Send me the chapters</span><span class="offer-report">Send me the report</span></button>
+              </div>
+              <p class="form-error" role="alert" hidden></p>
+            </form>
+          </div>
+          <div class="email-success" role="status">
+            <h3>You're in</h3>
+            <p class="offer-chapters">Check your inbox. The first email is on its way.</p>
+            <p class="offer-report">Check your inbox. The report is in the first email.</p>
+          </div>
+          <p class="small"><a class="link" href="/excerpt/">Or read a chapter first</a></p>
+        </div>
+        <div class="proof"><span class="proof-num">600+</span><span class="label label-muted">Recorded conversations</span></div>
+      </div>
+      <figure class="col-media photo ratio-landscape">
+  <picture>
+    <source type="image/webp" srcset="/design/assets/meet-magento-uk-2026-panel-3x2-800.webp 800w, /design/assets/meet-magento-uk-2026-panel-3x2.webp 1350w" sizes="(min-width: 960px) 560px, 100vw">
+    <img src="/design/assets/meet-magento-uk-2026-panel-3x2.jpg" srcset="/design/assets/meet-magento-uk-2026-panel-3x2-800.jpg 800w, /design/assets/meet-magento-uk-2026-panel-3x2.jpg 1350w" sizes="(min-width: 960px) 560px, 100vw" width="1350" height="900" alt="Maris Skujins, second from left, on stage with three other speakers at Meet Magento UK 2026" fetchpriority="high">
+  </picture>
+  <figcaption><span>Maris Skujins, second from left, on a panel at Meet Magento UK 2026.</span><span>Photo: Owen Billcliffe</span></figcaption>
+</figure>
+    </div>
+  </div>
+</section>
+
+<nav class="contents" aria-label="On this page">
+  <div class="container">
+    <ol>
+      <li><a href="#book"><span class="label label-muted">01</span> The book</a></li>
+      <li><a href="#frameworks"><span class="label label-muted">02</span> Frameworks</a></li>
+      <li><a href="#author"><span class="label label-muted">03</span> The author</a></li>
+      <li><a href="#chapter"><span class="label label-muted">04</span> Read a chapter</a></li>
+    </ol>
   </div>
 </nav>
 
-<div class="nav-mobile-menu" id="nav-mobile-menu">
-  <a href="/excerpt/">Read an Excerpt</a>
-  <a href="/about/">About the Author</a>
-  <a href="#early-access" onclick="closeMobileMenu()">Get Early Access</a>
-</div>
+<section class="section" id="book" aria-labelledby="book-title">
+  <div class="container">
+    <div class="grid section-head">
+      <p class="label">01 The book</p>
+      <h2 class="section-title" id="book-title">Most decisions don't stall on price. They stall on trust.</h2>
+    </div>
+    <div class="grid">
+      <div class="col-main stack">
+        <div class="body">
+          <p>Whichever chair you are in, trust gets earned in the same order. This book shows you that order, so the yes you walk out with is one you can walk back in on.</p>
+          <p>Think about the last time you had to decide on something that mattered, offered by someone who knew more about it than you did. A builder, an agency, a software partner. You weren't short of information. You were short of a reason to believe it. And on the other side of the table, if they were any good, someone was working out how to earn that. This book is about what happens in that gap, from both chairs.</p>
+        </div>
+        <div class="points">
+          <div class="point"><h3 class="h3">Patterns, not personality</h3><p>Trust gets earned in a predictable order. Once you can see it, you stop running on gut feel, whether you're the one asking for the yes or the one giving it.</p></div>
+          <div class="point"><h3 class="h3">From real conversations</h3><p>Every framework comes from recorded calls, not hypotheticals or case studies. Conversations where money changed hands and real decisions were made.</p></div>
+          <div class="point"><h3 class="h3">Ready for the next big yes</h3><p>No philosophy chapters to wade through. Each framework tells you what to look for and what to ask for, the next time you sit across from someone who hasn't decided yet, or who is waiting on you to.</p></div>
+          <div class="point"><h3 class="h3">The mechanics don't change</h3><p>Bikes sold online from a London flat and half-million-dollar digital projects: same instincts, same sequence, different zeros. A renovation or a new hire works the same way.</p></div>
+        </div>
+        <p class="section-end"><a class="link" href="#early-access">Get Early Access</a></p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section class="hero" id="top">
-  <div class="hero-inner">
-    <p class="hero-eyebrow">A book in development</p>
-    <h1 class="hero-title">The Trust Sequence</h1>
-    <p class="hero-subtitle-line">Walk Out With a Yes</p>
-    <p class="hero-desc">For the founder asking for budget, the project manager who needs a sign-off, and the owner deciding which supplier to trust. Whichever chair you are in, trust gets earned in the same order. This book shows you that order, so the yes you walk out with is one you can walk back in on.</p>
-    <div class="hero-signup">
-      <p class="hero-offer offer-chapters">Free: read the chapters as they are written, before anyone else.</p>
-      <p class="hero-offer offer-report">Free: <em>What 600+ recorded conversations taught me.</em> The patterns in the ones that closed.</p>
-      <div class="signup-card signup-card--inline">
-        <form class="email-form" data-signup novalidate>
-          <div class="email-inputs">
-            <input type="email" name="email" placeholder="Your email" aria-label="Email address" autocomplete="email" required>
+<section class="section" id="frameworks" aria-labelledby="frameworks-title">
+  <div class="container">
+    <div class="grid section-head">
+      <p class="label">02 Frameworks</p>
+      <h2 class="section-title" id="frameworks-title">Named frameworks for specific moments</h2>
+    </div>
+    <div class="grid">
+      <p class="col-main lead">Every decision has moments where it moves forward or quietly dies. These frameworks name those moments, and what each side of the table should be doing when they arrive.</p>
+      <div class="cards">
+        <article class="card"><p class="card-num">01 Framework</p><h3 class="h3">The Three Doors</h3><p>Safety, then Context, then Decision. Skip one and the conversation breaks. If you're the one deciding, it doubles as a test: never say yes in a room where you couldn't say "I don't understand."</p></article>
+        <article class="card"><p class="card-num">07 Framework</p><h3 class="h3">Cards on the Table</h3><p>A seller you can trust tells you what you don't need and names the risk before you think of it. A buyer who knows this asks what the other side gains. Either way, the cards go face up.</p></article>
+        <article class="card"><p class="card-num">11 Framework</p><h3 class="h3">The Soft Close</h3><p>If you have to push for the signature, the moment has already passed. A good yes is built from small agreements along the way, and a good buyer notices when they're being hurried.</p></article>
+      </div>
+      <div class="col-main"><p class="section-end"><span class="ink">+ 10 more frameworks inside the book</span><a class="link" href="#early-access">Get Early Access</a></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-label="Quote">
+  <div class="container">
+    <div class="grid">
+      <figure class="col-main quote">
+        <blockquote>"Nobody wants to take responsibility for the unknown."</blockquote>
+        <figcaption><cite class="label label-muted">Maris Skujins</cite></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="author" aria-labelledby="author-title">
+  <div class="container">
+    <div class="grid section-head">
+      <p class="label">03 The author</p>
+      <h2 class="section-title" id="author-title">Maris Skujins</h2>
+    </div>
+    <div class="grid">
+      <div class="col-main stack">
+        <div class="body">
+          <p>I didn't go to business school. I'm educated as a rock, if we're being honest. What I did do is build a company from a London flat, restoring bikes and shipping them to 33 countries, then spend the next decade selling complex digital projects across 20+ countries, sitting in hundreds of rooms where someone had to decide whether to trust us with their money.</p>
+          <p>A few hundred recorded calls in, I stopped thinking about what worked and started asking why. Why did some conversations end in a yes when the product was the same, the price was the same, and the team was the same? The answer was always the same thing: the sequence in which trust was built. The best calls followed it. The worst ones skipped a step.</p>
+          <p>This book pulls that sequence apart and names the pieces. I sell for a living, so read it as what I would want you to know when you sit across from me.</p>
+        </div>
+        <div class="proofs three">
+          <div class="proof"><span class="proof-num">600+</span><span class="label label-muted">Recorded conversations</span></div>
+          <div class="proof"><span class="proof-num">350+</span><span class="label label-muted">Deals analyzed</span></div>
+          <div class="proof"><span class="proof-num">20+</span><span class="label label-muted">Countries</span></div>
+        </div>
+        <p class="section-end"><a class="link" href="/about/">About the Author</a><a class="link" href="#early-access">Get Early Access</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="chapter" aria-labelledby="chapter-title">
+  <div class="container">
+    <div class="grid section-head">
+      <p class="label">04 Read a chapter</p>
+      <h2 class="section-title" id="chapter-title">Read an excerpt: The Three Doors</h2>
+    </div>
+    <div class="grid">
+      <div class="col-main stack">
+        <div class="body">
+          <p class="ink">The call started badly before anyone said anything important.</p>
+          <p>The prospect had agreed to 30 minutes. The salesperson opened with a two-minute company overview, clicked to a slide titled "Our Core Capabilities," and started talking about the platform. The prospect had their arms folded before the third slide.</p>
+        </div>
+        <p class="section-end"><a class="link link-arrow" href="/excerpt/">Read an Excerpt</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="early-access" aria-labelledby="signup-title">
+  <div class="container">
+    <div class="grid section-head">
+      <p class="label">Free for subscribers</p>
+      <h2 class="section-title" id="signup-title"><span class="offer-chapters">Read the chapters before the book.</span><span class="offer-report">What 600+ recorded conversations taught me.</span></h2>
+    </div>
+    <div class="grid">
+      <div class="col-main stack">
+        <p class="lead offer-chapters">The book is in development. Join the list and you'll get chapters as they're written, before anyone else, and the full book when it's done.</p>
+        <p class="lead offer-report">The patterns in the ones that closed, written for both sides of the table. Free when you join the list, and the chapters follow as they're written.</p>
+          <ul class="cta-deliverables">
+            <li class="offer-report">The report, in your first email</li>
+            <li>Chapters as they're written, before anyone else</li>
+            <li>The full book before it's published</li>
+          </ul>
+        <div class="signup-card">
+          <form class="email-form" data-signup novalidate>
+            <div class="email-inputs">
+              <input type="text" name="name" placeholder="First name" aria-label="First name" autocomplete="given-name">
+              <input type="email" name="email" placeholder="Email" aria-label="Email address" autocomplete="email" required>
+            </div>
             <button type="submit"><span class="offer-chapters">Send me the chapters</span><span class="offer-report">Send me the report</span></button>
-          </div>
-          <p class="form-error" role="alert" hidden></p>
-        </form>
-      </div>
-      <div class="email-success" role="status">
-        <h3>You're in</h3>
-        <p class="offer-chapters">Check your inbox. The first email is on its way.</p>
-        <p class="offer-report">Check your inbox. The report is in the first email.</p>
-      </div>
-      <p class="hero-proof">Built from 600+ recorded conversations</p>
-    </div>
-  </div>
-  <div class="hero-scroll"><span></span></div>
-</section>
-
-<section class="section book-section" id="book">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">The Book</p>
-    <h2 class="section-title reveal">Most decisions don't stall on price. They stall on trust.</h2>
-    <p class="section-desc reveal">Think about the last time you had to decide on something that mattered, offered by someone who knew more about it than you did. A builder, an agency, a software partner. You weren't short of information. You were short of a reason to believe it. And on the other side of the table, if they were any good, someone was working out how to earn that. This book is about what happens in that gap, from both chairs.</p>
-    <div class="book-grid">
-      <div class="book-point reveal">
-        <div class="book-point-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+            <p class="form-error" role="alert" hidden></p>
+          </form>
+          <p class="email-note">No spam. No funnels. Unsubscribe any time. <a href="/privacy/">How your email is handled</a>.</p>
         </div>
-        <div>
-          <h3>Patterns, not personality</h3>
-          <p>Trust gets earned in a predictable order. Once you can see it, you stop running on gut feel, whether you're the one asking for the yes or the one giving it.</p>
-        </div>
-      </div>
-      <div class="book-point reveal">
-        <div class="book-point-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/></svg>
-        </div>
-        <div>
-          <h3>From real conversations</h3>
-          <p>Every framework comes from recorded calls, not hypotheticals or case studies. Conversations where money changed hands and real decisions were made.</p>
-        </div>
-      </div>
-      <div class="book-point reveal">
-        <div class="book-point-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <div>
-          <h3>Ready for the next big yes</h3>
-          <p>No philosophy chapters to wade through. Each framework tells you what to look for and what to ask for, the next time you sit across from someone who hasn't decided yet, or who is waiting on you to.</p>
-        </div>
-      </div>
-      <div class="book-point reveal">
-        <div class="book-point-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg>
-        </div>
-        <div>
-          <h3>The mechanics don't change</h3>
-          <p>Bikes sold online from a London flat and half-million-dollar digital projects: same instincts, same sequence, different zeros. A renovation or a new hire works the same way.</p>
+        <div class="email-success" role="status">
+          <h3>You're in</h3>
+          <p class="offer-chapters">Check your inbox. The first email is on its way, and the chapters follow as they're written.</p>
+          <p class="offer-report">Check your inbox. The report is in the first email.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+</main>
 
-<section class="section frameworks-section" id="frameworks">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Inside the Book</p>
-    <h2 class="section-title reveal">Named frameworks for specific moments</h2>
-    <p class="section-desc reveal">Every decision has moments where it moves forward or quietly dies. These frameworks name those moments, and what each side of the table should be doing when they arrive.</p>
-    <div class="framework-cards">
-      <div class="fw-card reveal" data-num="01">
-        <p class="fw-card-label">Framework</p>
-        <h3 class="fw-card-name">The Three Doors</h3>
-        <p class="fw-card-desc">Safety, then Context, then Decision. Skip one and the conversation breaks. If you're the one deciding, it doubles as a test: never say yes in a room where you couldn't say "I don't understand."</p>
+<footer class="site-footer">
+  <div class="container">
+    <div class="grid">
+      <div class="footer-brand stack-tight">
+        <a href="/" class="wordmark">The Trust Sequence</a>
+        <p class="small">&copy; Maris Skujins. All rights reserved.</p>
       </div>
-      <div class="fw-card reveal" data-num="02">
-        <p class="fw-card-label">Framework</p>
-        <h3 class="fw-card-name">Cards on the Table</h3>
-        <p class="fw-card-desc">A seller you can trust tells you what you don't need and names the risk before you think of it. A buyer who knows this asks what the other side gains. Either way, the cards go face up.</p>
-      </div>
-      <div class="fw-card reveal" data-num="03">
-        <p class="fw-card-label">Framework</p>
-        <h3 class="fw-card-name">The Soft Close</h3>
-        <p class="fw-card-desc">If you have to push for the signature, the moment has already passed. A good yes is built from small agreements along the way, and a good buyer notices when they're being hurried.</p>
-      </div>
-    </div>
-    <p class="fw-more reveal">+ 10 more frameworks inside the book</p>
-  </div>
-</section>
-
-<section class="quote-break">
-  <div class="reveal">
-    <blockquote>"Nobody wants to take responsibility for the unknown."</blockquote>
-    <cite>Maris Skujins</cite>
-  </div>
-</section>
-
-<section class="section about-section" id="about">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">About the Author</p>
-    <h2 class="section-title reveal">Maris Skujins</h2>
-    <div class="about-content reveal">
-      <p>I didn't go to business school. I'm educated as a rock, if we're being honest. What I did do is build a company from a London flat, restoring bikes and shipping them to 33 countries, then spend the next decade selling complex digital projects across 20+ countries, sitting in hundreds of rooms where someone had to decide whether to trust us with their money.</p>
-      <p>A few hundred recorded calls in, I stopped thinking about what worked and started asking why. Why did some conversations end in a yes when the product was the same, the price was the same, and the team was the same? The answer was always the same thing: the sequence in which trust was built. The best calls followed it. The worst ones skipped a step.</p>
-      <p>This book pulls that sequence apart and names the pieces. I sell for a living, so read it as what I would want you to know when you sit across from me.</p>
-    </div>
-    <div class="about-stats reveal">
-      <div class="about-stat"><div class="about-stat-num">600+</div><div class="about-stat-label">Recorded conversations</div></div>
-      <div class="about-stat"><div class="about-stat-num">350+</div><div class="about-stat-label">Deals analyzed</div></div>
-      <div class="about-stat"><div class="about-stat-num">20+</div><div class="about-stat-label">Countries</div></div>
+      <nav class="footer-nav" aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/">About the Author</a></li>
+          <li><a href="/excerpt/">Read an Excerpt</a></li>
+          <li><a href="https://www.linkedin.com/in/maris-skujins/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </nav>
     </div>
   </div>
-</section>
-
-<section class="section cta-section" id="early-access">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Free for subscribers</p>
-    <h2 class="section-title reveal offer-chapters">Read the chapters before the book.</h2>
-    <h2 class="section-title reveal offer-report">What 600+ recorded conversations taught me.</h2>
-    <p class="section-desc reveal offer-chapters">The book is in development. Join the list and you'll get chapters as they're written, before anyone else, and the full book when it's done.</p>
-    <p class="section-desc reveal offer-report">The patterns in the ones that closed, written for both sides of the table. Free when you join the list, and the chapters follow as they're written.</p>
-    <ul class="cta-deliverables reveal">
-      <li class="offer-report">The report, in your first email</li>
-      <li>Chapters as they're written, before anyone else</li>
-      <li>The full book before it's published</li>
-    </ul>
-    <div class="signup-card reveal">
-      <form class="email-form" data-signup novalidate>
-        <div class="email-inputs">
-          <input type="text" name="name" placeholder="First name" aria-label="First name" autocomplete="given-name">
-          <input type="email" name="email" placeholder="Email" aria-label="Email address" autocomplete="email" required>
-        </div>
-        <button type="submit"><span class="offer-chapters">Send me the chapters</span><span class="offer-report">Send me the report</span></button>
-        <p class="form-error" role="alert" hidden></p>
-      </form>
-      <p class="email-note">No spam. No funnels. Unsubscribe any time. <a href="/privacy/">How your email is handled</a>.</p>
-    </div>
-    <div class="email-success" role="status">
-      <div class="check-circle">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-      </div>
-      <h3>You're in</h3>
-      <p class="offer-chapters">Check your inbox. The first email is on its way, and the chapters follow as they're written.</p>
-      <p class="offer-report">Check your inbox. The report is in the first email.</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-logo">The Trust Sequence</div>
-  <div class="footer-links">
-    <a href="/about/">About the Author</a>
-    <a href="/excerpt/">Read an Excerpt</a>
-    <a href="https://www.linkedin.com/in/maris-skujins/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="#top">Back to top</a>
-  </div>
-  <p class="footer-copy">&copy; Maris Skujins. All rights reserved. &middot; <a href="/privacy/">Privacy</a></p>
 </footer>
 
-<script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-const burger = document.getElementById('nav-burger');
-const mobileMenu = document.getElementById('nav-mobile-menu');
-burger.addEventListener('click', () => {
-  const isOpen = mobileMenu.classList.toggle('open');
-  burger.classList.toggle('open', isOpen);
-  burger.setAttribute('aria-expanded', isOpen);
-});
-function closeMobileMenu() {
-  mobileMenu.classList.remove('open');
-  burger.classList.remove('open');
-  burger.setAttribute('aria-expanded', false);
-}
-document.addEventListener('click', (e) => {
-  if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) closeMobileMenu();
-});
-</script>
-<script src="/signup.js"></script>
+<script src="/site.js" defer></script>
+<script src="/signup.js" defer></script>
 </body>
 </html>
