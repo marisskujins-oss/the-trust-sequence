@@ -286,7 +286,7 @@ app.post('/subscribe', async (req, res) => {
 
     // 200 = updated existing subscriber, 201 = new subscriber — both are success
     if (mlRes.ok) {
-      console.log(`subscribe: added/updated ${payload.email}`);
+      console.log("subscribe: ok");
       return res.status(200).json({ success: true });
     }
 
