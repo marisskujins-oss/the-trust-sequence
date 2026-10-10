@@ -1,4 +1,9 @@
 # GitHub Pages (Jekyll): keep these in the repo but off the public site.
+# design/tokens.css and design/assets/ are served; the site reads them.
 exclude:
   - linkedin-poster
-  - design
+  - design/brandbook.md
+  - design/README.md
+  - design/specimen.html
+  - design/templates
+  - design/email-template.html

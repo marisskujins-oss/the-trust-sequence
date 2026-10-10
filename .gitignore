@@ -13,6 +13,11 @@
 !/robots.txt
 !/signup.js
 !/signup.css
+!/site.css
+!/site.js
+!/favicon.svg
+!/favicon-32.png
+!/apple-touch-icon.png
 !/linkedin-poster/
 !/design/
 .DS_Store
