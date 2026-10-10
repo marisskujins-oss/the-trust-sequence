@@ -28,7 +28,7 @@ References: Monocle magazine and Danish design. Not the old-school author-site l
 
 Every text colour passes WCAG AA (4.5:1) on paper and on paper-alt. Field borders pass the 3:1 rule for interface parts.
 
-**The accent is signal yellow, used for two things only:** the primary button and one rule (4 by 64 px) above the first label on a page. Yellow on cream is low in contrast, so the button always carries a 1 px ink border, which gives it a visible edge (15:1) and a printed look. The label on the button is ink. The accent never colours text, links, icons, backgrounds or a second kind of button. A page may repeat the primary button where a second form appears (the hero and the foot of the page), never twice in one view.
+**The accent is signal yellow, used for two things only:** the primary button and one rule (4 by 64 px) above the first label on a page. Yellow on cream is low in contrast, so the button always carries a 1 px ink border, which gives it a visible edge (15:1) and a printed look. The label on the button is ink. The accent never colours text, links, icons, backgrounds or a second kind of button. The book cover carries its own accent rule; on a page the cover is an object, like a photograph, so its rule does not count as the page's one. A page may repeat the primary button where a second form appears (the hero and the foot of the page), never twice in one view.
 
 ## Type
 
@@ -69,7 +69,7 @@ Headlines in sentence case. Labels are the only capitals. No decorative italics;
 
 Breakpoints are 600, 960 and 1280 px. They are the only literal pixel values allowed outside `tokens.css`, because CSS cannot read variables inside media queries.
 
-Standard column spans from 960 px: section label 1 to 3, section headline and main column 4 to 10, hero text 1 to 6, hero photo 7 to 12, prose 3 to 9. Mobile first: below 960 everything spans the full width in reading order, which is decided per section (text before photo in the hero, labels before content).
+Standard column spans from 960 px: section label 1 to 3, section headline and main column 4 to 10, home hero cover 1 to 5 and copy 7 to 12, page-head text 1 to 6 and photo 7 to 12, book page cover 1 to 3 beside the main column, prose 3 to 9. Mobile first: below 960 everything spans the full width in reading order, which is decided per section (cover before copy in the home hero, text before photo in a page head, labels before content). The cover is the one exception to full width: two of four columns on a phone, three of eight from 600 px, so it and the form both fit in the first screen and a half.
 
 Nothing is centred by default. Centre only by decision.
 
@@ -100,6 +100,7 @@ Current photograph: Meet Magento UK 2026, file 268, cropped above the event logo
 Caption: "Maris Skujins, third from left, on a panel at Meet Magento UK 2026."
 Credit: "Photo: Owen Billcliffe" (from the file's metadata).
 Files: `assets/meet-magento-uk-2026-panel-3x2.*` (3:2) and `assets/meet-magento-uk-2026-panel.*` (16:9).
+Used in section 03 The author on the home page and at the top of the about page.
 
 ## Components
 
@@ -120,6 +121,8 @@ Files: `assets/meet-magento-uk-2026-panel-3x2.*` (3:2) and `assets/meet-magento-
 **Framework card.** No box. Ink rule on top, "07 Framework" as a label with the book's own number, the name in the serif, the description at `--size-small` in ink soft. Three across from 600 px.
 
 **Quote.** Left-aligned, 1 px ink rule on the left, the serif at h1 (or h2 inside prose), attribution as a muted label. No quotation-mark graphics.
+
+**Book cover.** The flat image rendered from `templates/cover.html`, turned toward the copy with CSS (`--cover-turn`, 12 degrees, and `--cover-perspective`) and given the system's only shadow (`--cover-shadow`), which also gives the paper cover an edge against the paper page. In 3D in the home hero and beside "Why I wrote it" on the book page; flat wherever the cover is small. Not on the about page, where the photograph does the work.
 
 **Proof number.** The number in the serif at h2 with its label, a hairline above.
 
@@ -148,7 +151,7 @@ The site's nav and footer set the wordmark as live text in the same font and wei
 
 ## Audience templates
 
-`templates/` holds the weekly assets: LinkedIn carousel page (1080 by 1350), quote card (1080 by 1080), podcast promo (1920 by 1080), and the site's OG image (1200 by 630). Each carries the wordmark, the system type and the one accent rule. Render them all with `design/templates/render.sh`; see `README.md` for custom copy.
+`templates/` holds the weekly assets: LinkedIn carousel page (1080 by 1350), quote card (1080 by 1080), podcast promo (1920 by 1080), the site's OG image (1200 by 630), and the cover with its LinkedIn post (1080 by 1350). Each carries the system type and the one accent rule; the carousel, quote card and podcast promo carry the wordmark, and the OG image and the LinkedIn post carry the cover instead. Render them all with `design/templates/render.sh`; see `README.md` for custom copy.
 
 ## Email
 
@@ -156,16 +159,25 @@ The site's nav and footer set the wordmark as live text in the same font and wei
 
 ## Forbidden
 
-- Dark grounds
+- Dark grounds, except the cover's ink version, which appears only inside the OG image and the LinkedIn post
 - The accent on a dark ground
 - Centred layouts by default
 - Decorative italics
 - Gradients
-- Drop shadows
+- Drop shadows, except the one under the 3D cover
 - A second accent, or the accent used for decoration
 - Full-bleed photographs, or photographs without a caption and credit
 - Em dashes in any copy
 
-## Cover and interior
+## Cover
 
-Later. The cover and interior will use this system: one flat colour, one object, the serif title, legible at 80 px wide. This section is a placeholder until that work starts.
+A mock cover, so the site reads as a book site until the publisher or a designer makes the real one in 2027, with this section as the brief. The rule: one flat colour, one object, the serif title, legible at 80 px wide.
+
+- **Source.** `templates/cover.html`, a 600 by 900 canvas (6 by 9, trade paperback), rendered at 3x to 1800 by 2700. Every colour and font comes from `tokens.css`.
+- **Front.** The title in the serif, set large and broken where the words break, "The Trust / Sequence". The subtitle as a tracked label. The author at the foot. The accent rule above the title, and nothing else: no tagline, no numbers, no blurb. Those live on the site.
+- **Variants.** b is the cover, chosen on 10 October 2026: the type plus a door, slightly open, drawn as three straight lines and standing on the author's baseline. The Three Doors is framework 01 and the excerpt, so the door says the book's first idea without a word. a, type only, stays in `cover.html` as the fallback: if the door ever reads as a logo or clip art, ship a. `data-variant` in `cover.html` picks the one the site shows.
+- **Grounds.** Paper is the default and the only one on the site. Ink, with paper type, is for dark settings: the OG image and the LinkedIn post. The accent stays off a dark ground, so on ink the rule is paper.
+- **Outputs.** `render.sh cover` writes the flat cover in both variants and both grounds, the site's 600 and 1200 px images, the OG image (the ink cover on the left third, the headline on the right) and the LinkedIn post. See `README.md`.
+- **Checked.** The title reads at 80 px wide on a light and a dark feed, in both grounds.
+
+The interior will use this system too. That work has not started.
