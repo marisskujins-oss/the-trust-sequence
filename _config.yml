@@ -1,3 +1,4 @@
-# GitHub Pages (Jekyll): keep the poster service source in the repo but off the public site.
+# GitHub Pages (Jekyll): keep these in the repo but off the public site.
 exclude:
   - linkedin-poster
+  - design
