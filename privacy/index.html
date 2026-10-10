@@ -10,9 +10,8 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/source-serif-4-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/design/tokens.css">
 <link rel="stylesheet" href="/site.css">
 <link rel="stylesheet" href="/signup.css">
@@ -72,7 +71,7 @@
       <li><strong>Your email address</strong> (required, used to send you what you signed up for and to contact you about the book)</li>
       <li><strong>The date and time</strong> your submission was received</li>
     </ul>
-    <p>The form itself does not collect your IP address, browser fingerprint, location, or any tracking identifier. The site itself sets no first-party cookies, runs no analytics scripts, embeds no advertising trackers, and uses no fingerprinting or social-media pixels.</p>
+    <p>The form itself does not collect your IP address, browser fingerprint, location, or any tracking identifier. The site itself sets no first-party cookies, runs no analytics scripts, loads its fonts from its own server rather than a third party, embeds no advertising trackers, and uses no fingerprinting or social-media pixels.</p>
 
     <h3>From the LinkedIn integration</h3>
     <p>The LinkedIn integration authenticates as Maris Skujins through LinkedIn's standard OAuth 2.0 flow. It stores:</p>
@@ -102,7 +101,6 @@
     <ul>
       <li><strong>UAB MailerLite</strong> (Lithuania): stores the email list and sends the emails, including the welcome sequence and any file delivered with it. MailerLite records whether each email was opened and which links were clicked; we use this only to check that emails arrive and are read. MailerLite processes data under its own privacy policy and data processing terms.</li>
       <li><strong>Our own subscribe server</strong> (poster.thetrustsequence.com, hosted in the EU and controlled by Maris Skujins): when you submit the form, your name and email pass through this server, which forwards them to MailerLite so that no MailerLite credentials are exposed in the page. The server does not store the submission or record your email address.</li>
-      <li><strong>Google LLC</strong> (Google Fonts): the site loads its typefaces from Google's font service, so your browser sends Google a request, including your IP address, when a page loads. Google processes this under its own privacy policy and may use servers in the United States, covered by the EU-US Data Privacy Framework.</li>
       <li><strong>GitHub, Inc.</strong> (a subsidiary of Microsoft): hosts the static website via GitHub Pages. GitHub may collect aggregate request logs (including visitor IP addresses) for security and abuse-prevention purposes, governed by GitHub's own privacy policy. We do not access these logs.</li>
       <li><strong>LinkedIn Ireland Unlimited Company</strong>: the destination platform for posts created by the integration. The integration interacts with LinkedIn's API; LinkedIn processes the resulting content under its own terms and privacy policy.</li>
       <li><strong>The hosting provider for the integration and subscribe server</strong>: a server located in the EU, controlled by Maris Skujins. OAuth tokens, queued posts and the post log are stored here, on storage that is not world-readable. Apart from the public subscribe endpoint, the server is reachable only through authenticated API endpoints.</li>

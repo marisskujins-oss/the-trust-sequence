@@ -19,11 +19,14 @@ The unpublished files are listed under `exclude` in `/_config.yml`.
 Every page loads, in this order:
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/source-serif-4-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/design/tokens.css">
 <link rel="stylesheet" href="/site.css">
 <link rel="stylesheet" href="/signup.css">
 ```
+
+Fonts are self-hosted in `/fonts` (Latin subset, SIL Open Font License, licences alongside) and declared in `tokens.css`, together with metric-matched Georgia and Arial fallbacks so the page does not shift when the fonts arrive. No request goes to Google.
 
 `site.css` holds the components and `signup.css` the form. Neither contains a colour or a size: everything is `var(--token)`. The only literal pixel values are the breakpoints (600, 960, 1280 px), because media queries cannot read variables. To check after an edit:
 
@@ -47,7 +50,7 @@ It should print nothing.
 design/templates/render.sh
 ```
 
-This renders all four templates to `design/templates/out/` with headless Chrome and copies the OG image to `/og-image.png`. Fonts load from Google Fonts, so it needs a connection.
+This renders all four templates to `design/templates/out/` with headless Chrome and copies the OG image to `/og-image.png`. Fonts come from `/fonts`, so it works offline.
 
 To render one template with your own copy, pass its name and a query string:
 
