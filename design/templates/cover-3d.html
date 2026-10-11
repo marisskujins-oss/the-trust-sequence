@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../tokens.css">
+<title>Book cover in 3D 700x1000, transparent</title>
+<!--
+  The cover as the site shows it: out/cover.png, turned toward the copy, with its shadow, on a transparent canvas.
+  render.sh renders it to design/assets/ at 1x and 2x, so the turn and the shadow are in the image and every browser shows the same thing.
+  The canvas is the 600 by 900 cover plus the --cover-bake-* margins in tokens.css: 700 by 1000.
+-->
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: transparent; }
+body { overflow: hidden; padding: calc(var(--cover-bake-top) * 1px) 0 0 calc(var(--cover-bake-left) * 1px); }
+img { display: block; width: calc(var(--cover-bake-face) * 1px); transform: perspective(var(--cover-perspective)) rotateY(var(--cover-turn)); transform-origin: left center; box-shadow: var(--cover-shadow); }
+</style>
+</head><body><img src="out/cover.png" alt=""></body></html>

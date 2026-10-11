@@ -11,12 +11,13 @@ OUT="$DIR/out"
 ASSETS="$DIR/../assets"
 mkdir -p "$OUT"
 
-size() { case $1 in carousel) echo "1080,1350";; quote) echo "1080,1080";; podcast) echo "1920,1080";; og) echo "1200,630";; cover) echo "600,900";; cover-linkedin) echo "1080,1350";; esac; }
+size() { case $1 in carousel) echo "1080,1350";; quote) echo "1080,1080";; podcast) echo "1920,1080";; og) echo "1200,630";; cover) echo "600,900";; cover-3d) echo "700,1000";; cover-linkedin) echo "1080,1350";; esac; }
 
-# render <template> [query] [output name] [scale]. Scale 3 turns the 600 by 900 cover into 1800 by 2700.
+# render <template> [query] [output name] [scale] [transparent]. Scale 3 turns the 600 by 900 cover into 1800 by 2700.
 render() {
-  local name=$1 query=${2:-} file=${3:-$1} scale=${4:-1}
-  "$CHROME" --headless=new --disable-gpu --hide-scrollbars --allow-file-access-from-files \
+  local name=$1 query=${2:-} file=${3:-$1} scale=${4:-1} background=""
+  [ "${5:-}" = transparent ] && background="--default-background-color=00000000"
+  "$CHROME" --headless=new --disable-gpu --hide-scrollbars --allow-file-access-from-files $background \
     --virtual-time-budget=8000 --force-device-scale-factor="$scale" --window-size="$(size "$name")" \
     --screenshot="$OUT/$file.png" "file://$DIR/$name.html$query" >/dev/null 2>&1
   echo "$OUT/$file.png"
@@ -34,11 +35,18 @@ cover() {
   render cover "" cover-1200 2
   cp "$OUT/cover-600.png" "$ASSETS/the-trust-sequence-cover-600.png"
   cp "$OUT/cover-1200.png" "$ASSETS/the-trust-sequence-cover-1200.png"
+  # The 3D cover the site shows: the turn and the shadow rendered into the image, on a transparent canvas.
+  render cover-3d "" cover-3d-700 1 transparent
+  render cover-3d "" cover-3d-1400 2 transparent
+  cp "$OUT/cover-3d-700.png" "$ASSETS/the-trust-sequence-cover-3d-700.png"
+  cp "$OUT/cover-3d-1400.png" "$ASSETS/the-trust-sequence-cover-3d-1400.png"
   echo "copied the site's cover to design/assets/"
   render og
   render cover-linkedin
   cp "$OUT/og.png" "$DIR/../../og-image.png"
   echo "copied og.png to og-image.png"
+  "$DIR/../stamp.sh" >/dev/null
+  echo "versioned the new files in the pages (design/stamp.sh)"
 }
 
 case ${1:-all} in
